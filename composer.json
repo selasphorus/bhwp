@@ -1,0 +1,17 @@
+{
+    "name": "atc/bhwp",
+    "description": "Core plugin functionality upon which WHx4, SDG, and other Birdhive plugins are built.",
+    "type": "wordpress-plugin",
+    "autoload": {
+        "psr-4": {
+            "atc\\BHWP\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "atc",
+            "email": "birdhive@gmail.com"
+        }
+    ],
+    "require": {}
+}
