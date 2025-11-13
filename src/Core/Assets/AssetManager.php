@@ -130,7 +130,7 @@ final class AssetManager
                 return (string)$mtime;
             }
         }
-        return defined('WHX4_VERSION') ? (string)WHX4_VERSION : '1.0.0';
+        return defined('BHWP_VERSION') ? (string)BHWP_VERSION : '1.0.0';
     }
 
     /**

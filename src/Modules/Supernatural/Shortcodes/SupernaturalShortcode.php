@@ -49,7 +49,7 @@ final class SupernaturalShortcode implements ShortcodeInterface
             //'pagination' => $pagination,
             'stats' => $stats,
             //'info' => $info, // for TS -- deprecate in favor of:
-            // Optionally pass debug through when WHX4_DEBUG is on:
+            // Optionally pass debug through when BHWP_DEBUG is on:
             'debug'      => $monsters['debug'] ?? null,
         ];
 

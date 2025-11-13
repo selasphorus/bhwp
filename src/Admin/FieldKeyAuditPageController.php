@@ -22,11 +22,11 @@ final class FieldKeyAuditPageController
     public static function addMenuPage(): void
     {
         add_submenu_page(
-            'whx4-settings', // parent slug, change if needed
+            'bhwp-settings', // parent slug, change if needed
             'ACF Field Audit',
             'ACF Field Audit',
             'manage_options',
-            'whx4-field-audit',
+            'bhwp-field-audit',
             [ self::class, 'renderPage' ]
             //[ $this, 'renderPage' ] // callback
         );
@@ -95,7 +95,7 @@ final class FieldKeyAuditPageController
                 <?php endforeach; ?>
             </ul> */ ?>
 
-            <p><a href="<?php echo esc_url( admin_url( 'admin.php?page=whx4-field-audit' ) ); ?>" class="button">Run Again</a></p>
+            <p><a href="<?php echo esc_url( admin_url( 'admin.php?page=bhwp-field-audit' ) ); ?>" class="button">Run Again</a></p>
         </div>
         <?php
     }
@@ -103,7 +103,7 @@ final class FieldKeyAuditPageController
     private static function handleDeleteOrphans(): void
     {
         if ( empty( $_POST['delete_keys'] ) || ! is_array( $_POST['delete_keys'] ) ) {
-            wp_safe_redirect( admin_url( 'admin.php?page=whx4-field-audit&deleted=0' ) );
+            wp_safe_redirect( admin_url( 'admin.php?page=bhwp-field-audit&deleted=0' ) );
             exit;
             //wp_die( 'No orphaned keys selected.' );
         }
@@ -123,7 +123,7 @@ final class FieldKeyAuditPageController
             );
         }
 
-        wp_safe_redirect( admin_url( 'admin.php?page=whx4-field-audit&deleted=' . $deleted ) );
+        wp_safe_redirect( admin_url( 'admin.php?page=bhwp-field-audit&deleted=' . $deleted ) );
         exit;
     }
 

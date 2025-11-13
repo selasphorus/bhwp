@@ -441,7 +441,7 @@ final class PostQuery
 	 */
 	private static function dateMetaSpecFromBounds(array $dateMeta, ?array $dateBounds): array
 	{
-		if (defined('WHX4_DEBUG') && WHX4_DEBUG) {
+		if (defined('BHWP_DEBUG') && BHWP_DEBUG) {
 		    error_log('[PostQuery::dateMetaSpecFromBounds] dateMeta: ' . print_r($dateMeta, true));
 		    //error_log('[PostQuery::dateMetaSpecFromBounds] dateBounds: ' . print_r($dateBounds, true));
 		}

@@ -31,7 +31,7 @@ final class Plugin implements PluginContext
     private static ?self $instance = null;
     protected bool $booted = false;
 
-	// NB: Set the actual modules array via boot (whx4.php) -- this way, Plugin class contains logic only, and other plugins or themes can register additional modules dynamically
+	// NB: Set the actual modules array via boot (bhwp.php) -- this way, Plugin class contains logic only, and other plugins or themes can register additional modules dynamically
 	// WIP clean this up and simplify
 	protected array $availableModules = [];
     protected array $activeModules = [];
@@ -101,7 +101,7 @@ final class Plugin implements PluginContext
 
 		BhWP::setContext($this); // <-- make context available to all handlers
 
-        //$this->defineConstants(); // phased out (for now) -- constants now defined via whx4.php
+        //$this->defineConstants(); // phased out (for now) -- constants now defined via bhwp.php
         $this->registerAdminHooks();
 
         CoreServices::boot(); // wip
@@ -265,38 +265,38 @@ final class Plugin implements PluginContext
     // TODO: move this to core Assets class?
 	public function enqueueAdminAssets(string $hook): void
 	{
-		//if ( $hook !== 'settings_page_whx4-settings' ) { return; }
+		//if ( $hook !== 'settings_page_bhwp-settings' ) { return; }
 
 		wp_enqueue_script(
-			'whx4-settings',
-			WHX4_PLUGIN_URL . 'assets/js/settings.js',
+			'bhwp-settings',
+			BHWP_PLUGIN_URL . 'assets/js/settings.js',
 			[],
 			'1.0',
 			true
 		);
 
 		/*wp_enqueue_style(
-			'whx4-settings',
-			WHX4_PLUGIN_DIR . '/assets/css/settings.css',
+			'bhwp-settings',
+			BHWP_PLUGIN_DIR . '/assets/css/settings.css',
 			[],
 			'1.0'
 		);*/
 
     	wp_enqueue_style(
-            'whx4-admin-style',
-            WHX4_PLUGIN_URL . 'assets/css/whx4-admin.css',
+            'bhwp-admin-style',
+            BHWP_PLUGIN_URL . 'assets/css/bhwp-admin.css',
             [],
-            filemtime( WHX4_PLUGIN_DIR . 'assets/css/whx4-admin.css' )
+            filemtime( BHWP_PLUGIN_DIR . 'assets/css/bhwp-admin.css' )
         );
 	}
 
     public function enqueuePublicAssets(): void
     {
     	wp_enqueue_style(
-            'whx4-style',
-            WHX4_PLUGIN_URL . 'assets/css/whx4.css',
+            'bhwp-style',
+            BHWP_PLUGIN_URL . 'assets/css/bhwp.css',
             [],
-            filemtime( WHX4_PLUGIN_DIR . 'assets/css/whx4.css' )
+            filemtime( BHWP_PLUGIN_DIR . 'assets/css/bhwp.css' )
         );
     }
 
@@ -599,7 +599,7 @@ final class Plugin implements PluginContext
     {
         // Prefer CLI output when available
         if (defined('WP_CLI') && \WP_CLI) {
-            \WP_CLI::debug($msg, 'whx4');
+            \WP_CLI::debug($msg, 'bhwp');
             return;
         }
 

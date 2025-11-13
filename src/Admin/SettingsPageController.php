@@ -24,7 +24,7 @@ class SettingsPageController
             'BhWP v2 Plugin Settings', // page_title
             'BhWP v2 Settings', // menu_title
             'manage_options', // capability
-            'whx4-settings', // menu_slug
+            'bhwp-settings', // menu_slug
             [ $this, 'renderSettingsPage' ] // callback
         );
     }*/
@@ -34,12 +34,12 @@ class SettingsPageController
      */
     public function registerSettingsPage(AdminPageRegistry $registry): void
     {
-        $registry->registerPage('whx4-settings', [
+        $registry->registerPage('bhwp-settings', [
             'type' => 'options',
             'page_title' => 'BhWP v2 Plugin Settings',
             'menu_title' => 'BhWP v2 Settings',
             'capability' => 'manage_options',
-            'menu_slug' => 'whx4-settings',
+            'menu_slug' => 'bhwp-settings',
             'controller' => [$this, 'renderSettingsPage'],
         ]);
     }

@@ -4,7 +4,7 @@ namespace atc\BhWP\Modules\Admin\Fields;
 
 use atc\BhWP\Core\Contracts\FieldGroupInterface;
 
-// TODO: rename all fields (keys/names) according to whx4 naming conventions
+// TODO: rename all fields (keys/names) according to bhwp naming conventions
 final class AdminNoteFields implements FieldGroupInterface
 {
     public static function register(): void

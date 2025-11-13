@@ -25,7 +25,7 @@ class PluginPaths
      */
     public static function baseFile(): string
     {
-        return self::baseDir() . 'whx4.php'; // Adjust if your main file differs
+        return self::baseDir() . 'bhwp.php'; // Adjust if your main file differs
     }
 
     /**

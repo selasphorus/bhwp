@@ -186,7 +186,7 @@ class TitleFilter
 
     protected static function getPostTypeHandler( string $postType, \WP_Post $post ): ?PostTypeHandler
     {
-        $handlers = WHX4::ctx()->getActivePostTypes();
+        $handlers = BHWP::ctx()->getActivePostTypes();
 
         foreach ( $handlers as $handler ) {
             if ( $handler->getSlug() === $postType ) {

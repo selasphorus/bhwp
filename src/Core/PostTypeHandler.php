@@ -318,7 +318,7 @@ abstract class PostTypeHandler extends BaseHandler
             ],
         ];
 
-        //if (defined('WHX4_DEBUG') && WHX4_DEBUG) {
+        //if (defined('BHWP_DEBUG') && BHWP_DEBUG) {
             $payload['debug'] = [
                 'args'          => $result['args']          ?? [],
                 'query_request' => $result['query_request'] ?? '',

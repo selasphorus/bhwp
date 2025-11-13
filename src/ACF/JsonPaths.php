@@ -18,32 +18,32 @@ class JsonPaths
 
     public static function jsonLoadPaths( array $paths ): array
     {
-        $paths[] = WHX4_PLUGIN_DIR . '/acf-json/field-groups';
-        $paths[] = WHX4_PLUGIN_DIR . '/acf-json/options-pages';
-        $paths[] = WHX4_PLUGIN_DIR . '/acf-json/post-types';
-        $paths[] = WHX4_PLUGIN_DIR . '/acf-json/taxonomies';
+        $paths[] = BHWP_PLUGIN_DIR . '/acf-json/field-groups';
+        $paths[] = BHWP_PLUGIN_DIR . '/acf-json/options-pages';
+        $paths[] = BHWP_PLUGIN_DIR . '/acf-json/post-types';
+        $paths[] = BHWP_PLUGIN_DIR . '/acf-json/taxonomies';
 
         return $paths;
     }
 
     public static function jsonSavePathForPostTypes(): string
     {
-        return WHX4_PLUGIN_DIR . '/acf-json/post-types';
+        return BHWP_PLUGIN_DIR . '/acf-json/post-types';
     }
 
     public static function jsonSavePathForFieldGroups(): string
     {
-        return WHX4_PLUGIN_DIR . '/acf-json/field-groups';
+        return BHWP_PLUGIN_DIR . '/acf-json/field-groups';
     }
 
     public static function jsonSavePathForTaxonomies(): string
     {
-        return WHX4_PLUGIN_DIR . '/acf-json/taxonomies';
+        return BHWP_PLUGIN_DIR . '/acf-json/taxonomies';
     }
 
     public static function jsonSavePathForOptionPages(): string
     {
-        return WHX4_PLUGIN_DIR . '/acf-json/options-pages';
+        return BHWP_PLUGIN_DIR . '/acf-json/options-pages';
     }
 
     public static function jsonFilename( string $filename, array $post ): string

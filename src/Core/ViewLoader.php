@@ -109,7 +109,7 @@ final class ViewLoader
      * Build ordered candidate paths:
      *   1) Theme overrides (child → parent)
      *   2) Module-registered root (src/Modules/<Module>/Views)
-     *   3) Plugin fallback (whx4/views/<view>.php)
+     *   3) Plugin fallback (bhwp/views/<view>.php)
      *
      * @param array{module?:string,post_type?:string,allow_theme?:bool} $specs
      * @return string[]
@@ -132,7 +132,7 @@ final class ViewLoader
                 self::appendPermutations(
                     $paths,
                     rtrim($root, '/'),
-                    'whx4',          // theme subdir
+                    'bhwp',          // theme subdir
                     $module,
                     $postType,
                     $view,
@@ -141,7 +141,7 @@ final class ViewLoader
             }
         }
 
-        // 2) Module-registered root (e.g., whx4/src/Modules/Supernatural/Views)
+        // 2) Module-registered root (e.g., bhwp/src/Modules/Supernatural/Views)
         if ($module !== '' && isset(self::$moduleViewRoots[$module])) {
             //error_log( 'self::moduleViewRoots[module]: ' . self::$moduleViewRoots[$module] . '' );
             $root = rtrim(self::$moduleViewRoots[$module], '/');
@@ -154,11 +154,11 @@ final class ViewLoader
             $paths[] = "{$root}/{$view}.php";
         }
 
-        // 3) Plugin fallback (whx4/views/<view>.php)
-        //error_log( 'WHX4_PLUGIN_DIR: ' . WHX4_PLUGIN_DIR . '' );
+        // 3) Plugin fallback (bhwp/views/<view>.php)
+        //error_log( 'BHWP_PLUGIN_DIR: ' . BHWP_PLUGIN_DIR . '' );
         self::appendPermutations(
             $paths,
-            rtrim(WHX4_PLUGIN_DIR, '/'),
+            rtrim(BHWP_PLUGIN_DIR, '/'),
             'views',        // plugin views dir
             $module,
             $postType,
