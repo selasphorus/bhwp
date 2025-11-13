@@ -121,8 +121,8 @@ final class Plugin implements PluginContext
         */
         /*
         add_action( 'init', function() {
-			\smith\Rex\Utils\TitleFilter::setContext( Plugin::getInstance() );
-			\smith\Rex\Utils\TitleFilter::boot();
+			\atc\BhWP\Utils\TitleFilter::setContext( Plugin::getInstance() );
+			\atc\BhWP\Utils\TitleFilter::boot();
 		}, 11 );
 		*/
 
@@ -196,7 +196,7 @@ final class Plugin implements PluginContext
 		// Register systems in the same order that they will run, though prioritied enforce the actual order on 'init' or 'acf/init'
 
 		// Register Custom Post Types
-		//(new \smith\Rex\Core\PostTypeRegistrar($this))->register(); // init:10
+		//(new \atc\BhWP\Core\PostTypeRegistrar($this))->register(); // init:10
         $this->postTypeRegistrar = new PostTypeRegistrar($this); // instance-based (needs plugin state)
         $this->postTypeRegistrar->register();                    // add_action('init', ..., BootOrder::CPT)
 
@@ -206,7 +206,7 @@ final class Plugin implements PluginContext
         // Register shared/global taxonomies? WIP
         /*
         add_filter('bhwp_register_taxonomy_handlers', function(array $list): array {
-			$list[] = \smith\Rex\Core\Taxonomies\RexTag::class; // object_types may be ['*'] or an explicit list
+			$list[] = \atc\BhWP\Core\Taxonomies\RexTag::class; // object_types may be ['*'] or an explicit list
 			return $list;
 		});
 
@@ -231,36 +231,6 @@ final class Plugin implements PluginContext
         //\smith\Rex\Core\Assets::register();                      // add_action('wp_enqueue_scripts', ..., BootOrder::ENQUEUE_ASSETS)
 
 	}
-
-    /*protected function initializeCore(): void
-    {
-        error_log( '=== Plugin::initializeCore() ===' );
-
-        CoreServices::boot();
-
-        // Load modules and config
-
-        // Discover all modules registered by core + add‑ons
-        $modules = apply_filters( 'bhwp_register_modules', [] );
-        $this->setAvailableModules( $modules );
-
-        // Settings
-        $this->settings = $this->settings ?? new SettingsManager(); // redundant w/ _construct -- WIP
-
-        // First‑run initializer: if no selection saved, enable defaults
-        $this->settings->ensureInitialized($this->getAvailableModules());
-
-        // Load saved (or just‑seeded) active modules
-        $this->loadActiveModules();
-
-        // Lazily build services
-        $this->postTypeRegistrar = $this->postTypeRegistrar ?? new PostTypeRegistrar($this);
-        $this->subtypeRegistry = $this->subtypeRegistry ?? new SubtypeRegistry($this);
-        $this->fieldGroupLoader  = $this->fieldGroupLoader  ?? new FieldGroupLoader($this);
-
-        // Boot active modules and remember which ones succeeded
-        $this->bootActiveModules();
-    }*/
 
     // TODO: move this to core Assets class?
 	public function enqueueAdminAssets(string $hook): void
@@ -604,7 +574,7 @@ final class Plugin implements PluginContext
         }
 
         // Otherwise log to php/wp debug.log
-        error_log('[Rex] ' . $msg);
+        error_log('[BhWP] ' . $msg);
     }*/
 
 	//

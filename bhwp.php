@@ -15,6 +15,8 @@
 
 declare(strict_types=1);
 
+namespace atc\BhWP;
+
 // Prevent direct access
 if ( !defined( 'ABSPATH' ) ) exit;
 

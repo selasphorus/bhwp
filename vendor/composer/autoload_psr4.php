@@ -6,5 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'atc\\BHWP\\' => array($baseDir . '/src'),
+    'atc\\BhWP\\' => array($baseDir . '/src'),
 );

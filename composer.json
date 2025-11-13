@@ -4,7 +4,7 @@
     "type": "wordpress-plugin",
     "autoload": {
         "psr-4": {
-            "atc\\BHWP\\": "src/"
+            "atc\\BhWP\\": "src/"
         }
     },
     "authors": [
