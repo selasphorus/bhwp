@@ -1,11 +1,11 @@
 <?php
 
-namespace atc\WHx4\Modules\Admin;
+namespace atc\BhWP\Modules\Admin;
 
-use atc\WHx4\Core\Module as BaseModule;
+use atc\BhWP\Core\Module as BaseModule;
 
 // Post Types
-use atc\WHx4\Modules\Admin\PostTypes\AdminNote;
+use atc\BhWP\Modules\Admin\PostTypes\AdminNote;
 //use atc\Bkkp\Modules\Admin\PostTypes\YYY;
 //use atc\Bkkp\Modules\Admin\PostTypes\ZZZ;
 

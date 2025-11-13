@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:       BhWP
- * Description:       A WordPress plugin for core functionality used by WHx4, Bkkp, SDG, etc.
+ * Description:       A WordPress plugin for core functionality used by BhWP, Bkkp, SDG, etc.
  * Dependencies:      
  * Requires Plugins:  advanced-custom-fields-pro
  * Version:           1.0

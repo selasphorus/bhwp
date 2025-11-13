@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace atc\WHx4\Core\Query;
+namespace atc\BhWP\Core\Query;
 
-use atc\WHx4\Core\Query\QueryHelpers;
-use atc\WHx4\Utils\DateHelper;
+use atc\BhWP\Core\Query\QueryHelpers;
+use atc\BhWP\Utils\DateHelper;
 
 /**
  * MetaQueryBuilder

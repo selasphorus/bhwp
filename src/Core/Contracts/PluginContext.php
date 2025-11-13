@@ -1,8 +1,8 @@
 <?php
 
-namespace atc\WHx4\Core\Contracts;
+namespace atc\BhWP\Core\Contracts;
 
-use atc\WHx4\Core\Contracts\ModuleInterface;
+use atc\BhWP\Core\Contracts\ModuleInterface;
 
 interface PluginContext
 {

@@ -1,7 +1,7 @@
 <?php
-namespace atc\WHx4\Core\Shortcodes;
+namespace atc\BhWP\Core\Shortcodes;
 
-use atc\WHx4\Core\Contracts\ShortcodeInterface;
+use atc\BhWP\Core\Contracts\ShortcodeInterface;
 
 final class ShortcodeManager
 {

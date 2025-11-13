@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace atc\WHx4\Core;
+namespace atc\BhWP\Core;
 
 /**
  * Enumerates the categories of view templates Rex can load.

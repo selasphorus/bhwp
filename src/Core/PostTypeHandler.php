@@ -1,14 +1,14 @@
 <?php
 
-namespace atc\WHx4\Core;
-// TODO: move this and BaseHandler to atc\WHx4\Core\Handlers\ ?
+namespace atc\BhWP\Core;
+// TODO: move this and BaseHandler to atc\BhWP\Core\Handlers\ ?
 
-use atc\WHx4\Core\WHx4;
-use atc\WHx4\Core\BaseHandler;
-use atc\WHx4\Core\Traits\AppliesTitleArgs;
-use atc\WHx4\Core\Query\PostQuery;
+use atc\BhWP\Core\BhWP;
+use atc\BhWP\Core\BaseHandler;
+use atc\BhWP\Core\Traits\AppliesTitleArgs;
+use atc\BhWP\Core\Query\PostQuery;
 //
-use atc\WHx4\Utils\ClassInfo;
+use atc\BhWP\Utils\ClassInfo;
 
 abstract class PostTypeHandler extends BaseHandler
 {
@@ -141,7 +141,7 @@ abstract class PostTypeHandler extends BaseHandler
 	{
 		//error_log( "PostTypeHandler::resolvePostTypeFromContext" );
 		try {
-			$ctx = WHx4::ctx();
+			$ctx = BhWP::ctx();
 			$map = is_array($ctx->getActivePostTypes()) ? $ctx->getActivePostTypes() : [];
 			foreach ($map as $ptype => $class) {
 				if ($class === static::class) {
@@ -398,7 +398,7 @@ abstract class PostTypeHandler extends BaseHandler
     }
 
     /**
-     * Get the handler FQCN for a CPT slug, or null if not WHx4-managed.
+     * Get the handler FQCN for a CPT slug, or null if not BhWP-managed.
      */
     public static function getHandlerClassForPostType(string $postType): ?string
     {
@@ -412,7 +412,7 @@ abstract class PostTypeHandler extends BaseHandler
             return null;
         }
 
-        $activePostTypes = WHx4::ctx()->getActivePostTypes(); // ['person' => \...Person::class]
+        $activePostTypes = BhWP::ctx()->getActivePostTypes(); // ['person' => \...Person::class]
         if ( empty( $activePostTypes ) ) {
 			return null;
 		}
@@ -461,7 +461,7 @@ abstract class PostTypeHandler extends BaseHandler
 			return null;
 		}
 
-        // Handlers in WHx4 accept (?\WP_Post $post = null)
+        // Handlers in BhWP accept (?\WP_Post $post = null)
         /** @var self $instance */
         $instance = new $class($post);
 

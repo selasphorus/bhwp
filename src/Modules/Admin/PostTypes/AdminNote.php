@@ -1,8 +1,8 @@
 <?php
 
-namespace atc\WHx4\Modules\Admin\PostTypes;
+namespace atc\BhWP\Modules\Admin\PostTypes;
 
-use atc\WHx4\Core\PostTypeHandler;
+use atc\BhWP\Core\PostTypeHandler;
 
 // TODO: phase out this post type, migrate admin_notes to more general "Notes" posttype?
 class AdminNote extends PostTypeHandler

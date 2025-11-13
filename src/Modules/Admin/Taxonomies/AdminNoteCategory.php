@@ -1,8 +1,8 @@
 <?php
 
-namespace atc\WHx4\Modules\Admin\Taxonomies;
+namespace atc\BhWP\Modules\Admin\Taxonomies;
 
-use atc\WHx4\Core\TaxonomyHandler;
+use atc\BhWP\Core\TaxonomyHandler;
 
 class AdminNoteCategory extends TaxonomyHandler
 {

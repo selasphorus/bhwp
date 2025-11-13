@@ -1,12 +1,12 @@
 <?php
 
-namespace atc\WHx4\Core;
+namespace atc\BhWP\Core;
 
-use atc\WHx4\Core\WHx4;
-use atc\WHx4\Core\Contracts\ModuleInterface;
-use atc\WHx4\Core\ViewLoader;
-use atc\WHx4\Core\PostTypeHandler;
-use atc\WHx4\Core\Shortcodes\ShortcodeManager;
+use atc\BhWP\Core\BhWP;
+use atc\BhWP\Core\Contracts\ModuleInterface;
+use atc\BhWP\Core\ViewLoader;
+use atc\BhWP\Core\PostTypeHandler;
+use atc\BhWP\Core\Shortcodes\ShortcodeManager;
 
 // TODO: make this final class?
 abstract class Module implements ModuleInterface
@@ -35,7 +35,7 @@ abstract class Module implements ModuleInterface
 		//error_log( '=== Module class boot() for module: ' . $this->getSlug() . '===' );
         $this->registerDefaultViewRoot();
 
-        $enabledSlugs = WHx4::ctx()
+        $enabledSlugs = BhWP::ctx()
 			->getSettingsManager()
 			->getEnabledPostTypeSlugsByModule()[ $this->getSlug() ] ?? [];
 
@@ -69,7 +69,7 @@ abstract class Module implements ModuleInterface
 		}
 
 		//error_log('Module::boot -> calling ShortcodeManager::add');
-        ShortcodeManager::add(atc\WHx4\Core\Shortcodes\WHx4ListShortcode::class);
+        ShortcodeManager::add(atc\BhWP\Core\Shortcodes\BhWPListShortcode::class);
     }
 
 	public function getSlug(): string
@@ -101,7 +101,7 @@ abstract class Module implements ModuleInterface
 	
 	protected function findViaHandler(string $postType, array $filters): array
 	{
-		$map   = WHx4::ctx()->getActivePostTypes(); // ['monster' => Monster::class, ...]
+		$map   = BhWP::ctx()->getActivePostTypes(); // ['monster' => Monster::class, ...]
 		$class = $map[$postType] ?? null;
 	
 		if (!$class || !is_subclass_of($class, PostTypeHandler::class)) {

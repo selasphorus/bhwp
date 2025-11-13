@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace atc\WHx4\Core\Query;
+namespace atc\BhWP\Core\Query;
 
 use DateTimeImmutable;
 use DateTimeInterface;
 use DateTimeZone;
 use Exception; // for the defensive catch (Exception $e) when creating DateTimeZone
 use InvalidArgumentException; // for the explicit throw on bad args
-use atc\WHx4\Utils\Text;
-use atc\WHx4\Utils\DateHelper;
+use atc\BhWP\Utils\Text;
+use atc\BhWP\Utils\DateHelper;
 
 class ScopedDateResolver
 {

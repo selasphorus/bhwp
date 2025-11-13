@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace atc\WHx4\Core;
-// TODO: move this and ViewKind to atc\WHx4\Core\View\ ?
+namespace atc\BhWP\Core;
+// TODO: move this and ViewKind to atc\BhWP\Core\View\ ?
 
-use atc\WHx4\Core\WHx4;
-use atc\WHx4\Core\ViewKind;
-use atc\WHx4\Utils\Text;
-use atc\WHx4\Utils\ClassInfo;
+use atc\BhWP\Core\BhWP;
+use atc\BhWP\Core\ViewKind;
+use atc\BhWP\Utils\Text;
+use atc\BhWP\Utils\ClassInfo;
 
 /**
  * Framework-level view resolver & renderer.

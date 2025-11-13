@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace atc\WHx4\Core\Assets;
+namespace atc\BhWP\Core\Assets;
 
 final class AssetManager
 {

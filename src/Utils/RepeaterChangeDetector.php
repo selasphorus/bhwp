@@ -1,6 +1,6 @@
 <?php
 
-namespace atc\WHx4\Utils;
+namespace atc\BhWP\Utils;
 
 class RepeaterChangeDetector
 {

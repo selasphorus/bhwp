@@ -1,8 +1,8 @@
 <?php
 
-namespace atc\WHx4\Modules\Core\PostTypes;
+namespace atc\BhWP\Modules\Core\PostTypes;
 
-use atc\WHx4\Core\PostTypeHandler; //use atc\WHx4\Core\PostTypes\PostTypeHandler;
+use atc\BhWP\Core\PostTypeHandler; //use atc\BhWP\Core\PostTypes\PostTypeHandler;
 
 // This handler stub is necessary to faciliate the registration of Subtypes of core WP post types
 

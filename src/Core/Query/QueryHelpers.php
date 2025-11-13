@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace atc\WHx4\Core\Query;
+namespace atc\BhWP\Core\Query;
 
-use atc\WHx4\Utils\Text;
+use atc\BhWP\Utils\Text;
 
 final class QueryHelpers
 {

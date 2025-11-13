@@ -1,6 +1,6 @@
 <?php
 
-namespace atc\WHx4\Core;
+namespace atc\BhWP\Core;
 
 class PostUtils
 {

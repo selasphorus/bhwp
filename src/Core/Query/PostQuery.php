@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace atc\WHx4\Core\Query;
+namespace atc\BhWP\Core\Query;
 
 use WP_Query;
-use atc\WHx4\Core\WHx4;
-use atc\WHx4\Utils\DateHelper;
-use atc\WHx4\Core\Query\QueryHelpers;
-use atc\WHx4\Core\Query\MetaQueryBuilder;
-use atc\WHx4\Core\Query\TaxQueryBuilder;
-//use atc\WHx4\Core\Contracts\QueryContributor;
-//use atc\WHx4\Query\ScopedDateResolver;
-use atc\WHx4\Core\Http\UrlParamBridge;
+use atc\BhWP\Core\BhWP;
+use atc\BhWP\Utils\DateHelper;
+use atc\BhWP\Core\Query\QueryHelpers;
+use atc\BhWP\Core\Query\MetaQueryBuilder;
+use atc\BhWP\Core\Query\TaxQueryBuilder;
+//use atc\BhWP\Core\Contracts\QueryContributor;
+//use atc\BhWP\Query\ScopedDateResolver;
+use atc\BhWP\Core\Http\UrlParamBridge;
 
 final class PostQuery
 {
@@ -139,7 +139,7 @@ final class PostQuery
         //error_log('[PostQuery::find] args BEFORE adjustQueryArgs: ' . json_encode($args, JSON_UNESCAPED_SLASHES));
         
         // 5) Allow the active CPT handler to refine args (AFTER base args are built)
-        $handlerClass = WHx4::ctx()->getActivePostTypes()[$ptype] ?? null;
+        $handlerClass = BhWP::ctx()->getActivePostTypes()[$ptype] ?? null;
         if ($handlerClass && is_a($handlerClass, QueryContributor::class, true)) {
             /** @var QueryContributor $contrib */
             $contrib = new $handlerClass();
@@ -211,7 +211,7 @@ final class PostQuery
     {
         // 1) Post type must be active/enabled
         $ptype = isset($params['post_type']) ? (string)$params['post_type'] : 'post';
-        $enabled = array_keys(WHx4::ctx()->getActivePostTypes());
+        $enabled = array_keys(BhWP::ctx()->getActivePostTypes());
         if (!in_array($ptype, $enabled, true)) {
             // Fallback to 'post' (or throw) — your call:
             $ptype = 'post';

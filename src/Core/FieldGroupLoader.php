@@ -1,16 +1,16 @@
 <?php
 
-namespace atc\WHx4\Core;
+namespace atc\BhWP\Core;
 
-use atc\WHx4\Core\WHx4;
-//use atc\WHx4\Core\Util\NamespaceUtil;
+use atc\BhWP\Core\BhWP;
+//use atc\BhWP\Core\Util\NamespaceUtil;
 use ReflectionClass;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use RegexIterator;
-use atc\WHx4\Core\Contracts\FieldGroupInterface;
-use atc\WHx4\Core\Contracts\PostTypeFieldGroupInterface;
-use atc\WHx4\Core\Contracts\SubtypeFieldGroupInterface;
+use atc\BhWP\Core\Contracts\FieldGroupInterface;
+use atc\BhWP\Core\Contracts\PostTypeFieldGroupInterface;
+use atc\BhWP\Core\Contracts\SubtypeFieldGroupInterface;
 
 class FieldGroupLoader
 {
@@ -28,7 +28,7 @@ class FieldGroupLoader
         //error_log( '=== FieldGroupLoader::boot() ===' );
 
         // Abort if no modules have been booted
-        if ( !WHx4::ctx()->modulesBooted() ) {
+        if ( !BhWP::ctx()->modulesBooted() ) {
             //error_log( '=== no modules booted yet => abort ===' );
             return;
         }
@@ -41,7 +41,7 @@ class FieldGroupLoader
     public function registerAll(): void
     {
         //error_log( '=== registerAll field groups ===' );
-        foreach( WHx4::ctx()->getActiveModules() as $moduleClass ) {
+        foreach( BhWP::ctx()->getActiveModules() as $moduleClass ) {
             $this->registerFieldsForModule( $moduleClass );
         }
     }
@@ -59,7 +59,7 @@ class FieldGroupLoader
             return;
         }
 
-        $activePostTypes = WHx4::ctx()->getActivePostTypes();
+        $activePostTypes = BhWP::ctx()->getActivePostTypes();
         //error_log( 'activePostTypes: ' . print_r($activePostTypes, true) );
 
         // === Build a map of postType slug => short class name (e.g. rex_event => Event)
@@ -187,7 +187,7 @@ class FieldGroupLoader
     }
 
     /*
-    // V1 -- works for WHx4 but not add-on modules
+    // V1 -- works for BhWP but not add-on modules
     protected function getFullyQualifiedClassName( string $file ): string
     {
         // Get path for "src" dir
@@ -203,13 +203,13 @@ class FieldGroupLoader
         // Replace directory separators with backslashes and strip ".php"
         $relativePath = str_replace( [DIRECTORY_SEPARATOR, '.php'], ['\\', ''], $relativePath );
 
-        return 'atc\\WHx4\\' . $relativePath;
+        return 'atc\\BhWP\\' . $relativePath;
     }*/
 
     // WIP alt generalized method
     /*protected function getFullyQualifiedClassName(string $file): string
     {
-        return NamespaceUtil::fqcnFromFile($file, 'atc\\WHx4', dirname(__DIR__, 2) . '/src/');
+        return NamespaceUtil::fqcnFromFile($file, 'atc\\BhWP', dirname(__DIR__, 2) . '/src/');
     }*/
 
     // Get fqcn from filename
@@ -235,7 +235,7 @@ class FieldGroupLoader
         $relativePath = preg_replace('/\.php$/', '', $relativePath);
 
         // Keep old behavior for backward compatibility
-        return 'atc\\WHx4\\' . $relativePath;
+        return 'atc\\BhWP\\' . $relativePath;
     }
 
     /**
@@ -282,7 +282,7 @@ class FieldGroupLoader
     /*
     public static function registerAll(): void {
         $basePath = __DIR__ . '/../Modules/';
-        $baseNamespace = 'atc\WHx4\\Modules\\';
+        $baseNamespace = 'atc\BhWP\\Modules\\';
         $activePostTypes = PostTypeRegistrar::getActivePostTypes();
 
         $iterator = new RegexIterator(

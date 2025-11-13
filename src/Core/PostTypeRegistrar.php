@@ -1,11 +1,11 @@
 <?php
 
-namespace atc\WHx4\Core;
+namespace atc\BhWP\Core;
 
-use atc\WHx4\Core\WHx4;
-use atc\WHx4\Core\BootOrder;
-use atc\WHx4\Core\PostTypeHandler;
-use atc\WHx4\Utils\Text;
+use atc\BhWP\Core\BhWP;
+use atc\BhWP\Core\BootOrder;
+use atc\BhWP\Core\PostTypeHandler;
+use atc\BhWP\Utils\Text;
 
 class PostTypeRegistrar
 {
@@ -29,12 +29,12 @@ class PostTypeRegistrar
         //error_log( '=== PostTypeRegistrar::bootstrap() ===' );
 
         // Abort if no modules have been booted
-		if ( !WHx4::ctx()->modulesBooted() ) {
+		if ( !BhWP::ctx()->modulesBooted() ) {
 		    error_log( '=== no modules booted yet => abort ===' );
 			return;
 		}
 
-        $activePostTypes = WHx4::ctx()->getActivePostTypes();
+        $activePostTypes = BhWP::ctx()->getActivePostTypes();
         if ( empty( $activePostTypes ) ) {
 			error_log( 'No active post types found. Skipping registration.' );
 			return;
@@ -146,7 +146,7 @@ class PostTypeRegistrar
 		//$roles = ['administrator']; //
 		$roles = ['administrator', 'editor'];
 
-		$activePostTypes = WHx4::ctx()->getActivePostTypes();
+		$activePostTypes = BhWP::ctx()->getActivePostTypes();
 		//error_log( 'activePostTypes: ' . print_r($activePostTypes, true). ' ==' );
 
 		foreach ( $activePostTypes as $slug => $handlerClass ) {
@@ -239,8 +239,8 @@ class PostTypeRegistrar
         }
 
         // Extract root prefix up to "Modules\"
-        // e.g. atc\WHx4\Modules\Supernatural\PostTypes\Monster
-        // -> prefix: atc\WHx4\Modules\, currentModule: Supernatural
+        // e.g. atc\BhWP\Modules\Supernatural\PostTypes\Monster
+        // -> prefix: atc\BhWP\Modules\, currentModule: Supernatural
         /*$class = static::class;
         if (!preg_match('/^(.*\\\\Modules\\\\)([^\\\\]+)/', $class, $m)) {
             error_log( 'class: ' . $class );
@@ -253,7 +253,7 @@ class PostTypeRegistrar
             //return $this->studly($name);
         }
         //error_log( 'm: ' . print_r($m, true) );
-        $modulesPrefix = $m[1]; // "atc\WHx4\Modules\"
+        $modulesPrefix = $m[1]; // "atc\BhWP\Modules\"
         $currentModule = $m[2]; // "Supernatural"
 
         // Optional "Module:basename" syntax

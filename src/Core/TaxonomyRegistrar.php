@@ -1,10 +1,10 @@
 <?php
 
-namespace atc\WHx4\Core;
+namespace atc\BhWP\Core;
 
-use atc\WHx4\Core\BootOrder;
-use atc\WHx4\Core\TaxonomyHandler;
-//use atc\WHx4\Core\SubtypeRegistry;
+use atc\BhWP\Core\BootOrder;
+use atc\BhWP\Core\TaxonomyHandler;
+//use atc\BhWP\Core\SubtypeRegistry;
 
 final class TaxonomyRegistrar
 {
@@ -69,7 +69,7 @@ final class TaxonomyRegistrar
                 continue;
             }
 
-            // Resolve wildcard '*' and apply tax to all active WHx4 CPTs (if provided)
+            // Resolve wildcard '*' and apply tax to all active BhWP CPTs (if provided)
             $targets = $h->getObjectTypes();
             if (in_array('*', $targets, true)) {
                 $targets = $activePostTypes ?: [];

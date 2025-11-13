@@ -1,14 +1,14 @@
 <?php
-namespace atc\WHx4\Core;
+namespace atc\BhWP\Core;
 
-use atc\WHx4\Core\WHx4;
-use atc\WHx4\Core\ViewLoader;
-use atc\WHx4\Utils\ClassInfo;
+use atc\BhWP\Core\BhWP;
+use atc\BhWP\Core\ViewLoader;
+use atc\BhWP\Utils\ClassInfo;
 
 /**
- * Routes WP's single/archive template resolution for WHx4-managed CPTs.
+ * Routes WP's single/archive template resolution for BhWP-managed CPTs.
  * Honors native theme overrides (single-{pt}.php, archive-{pt}.php) first,
- * then falls back to the WHx4 view cascade via ViewLoader.
+ * then falls back to the BhWP view cascade via ViewLoader.
  */
 final class TemplateRouter
 {
@@ -66,12 +66,12 @@ final class TemplateRouter
     }
 
     /**
-     * Find the WHx4 view path for a CPT and view kind ("single"|"archive").
+     * Find the BhWP view path for a CPT and view kind ("single"|"archive").
      * Returns the absolute path if found; otherwise null (caller falls back to WP's template).
      */
     private static function locatePostTypeTemplate(string $kind, string $postType, string $fallback): ?string
     {
-        $activePostTypes = WHx4::ctx()->getActivePostTypes(); // ['person' => \...Person::class]
+        $activePostTypes = BhWP::ctx()->getActivePostTypes(); // ['person' => \...Person::class]
         $handlerClass = $activePostTypes[$postType] ?? null;
         if (!$handlerClass || !class_exists($handlerClass)) {
             return null;
@@ -79,7 +79,7 @@ final class TemplateRouter
         $key = strtolower((string) ClassInfo::getViewNamespace($handlerClass));
         //$key = self::viewKeyForPostType($postType); // e.g. "supernatural/monster"
         if (!$key) {
-            return null; // Not a WHx4-managed CPT or no handler registered.
+            return null; // Not a BhWP-managed CPT or no handler registered.
         }
 
         [$module] = explode('/', $key, 2);
@@ -97,7 +97,7 @@ final class TemplateRouter
      */
     /*public static function viewKeyForPostType(string $postType): ?string
     {
-        $activePostTypes = WHx4::ctx()->getActivePostTypes(); // ['person' => \...Person::class]
+        $activePostTypes = BhWP::ctx()->getActivePostTypes(); // ['person' => \...Person::class]
         $handlerClass = $activePostTypes[$postType] ?? null;
         if (!$handlerClass || !class_exists($handlerClass)) {
             return null;

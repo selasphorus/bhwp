@@ -1,8 +1,8 @@
 <?php
 
-namespace atc\WHx4\Core;
+namespace atc\BhWP\Core;
 
-use atc\WHx4\Plugin;
+use atc\BhWP\Plugin;
 
 final class SettingsManager
 {

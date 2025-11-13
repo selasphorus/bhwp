@@ -1,9 +1,9 @@
 <?php
 
-namespace atc\WHx4\Core;
+namespace atc\BhWP\Core;
 
-use atc\WHx4\Core\BootOrder;
-use atc\WHx4\Core\Contracts\SubtypeInterface;
+use atc\BhWP\Core\BootOrder;
+use atc\BhWP\Core\Contracts\SubtypeInterface;
 
 // WIP 08/22/25
 final class SubtypeRegistry

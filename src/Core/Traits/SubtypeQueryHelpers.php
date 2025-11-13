@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace atc\WHx4\Core\Traits;
+namespace atc\BhWP\Core\Traits;
 
-use atc\WHx4\Core\Query\PostQuery;
+use atc\BhWP\Core\Query\PostQuery;
 
 trait SubtypeQueryHelpers
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace atc\WHx4\Core;
+namespace atc\BhWP\Core;
 
-use atc\WHx4\Core\BaseHandler;
+use atc\BhWP\Core\BaseHandler;
 
 abstract class TaxonomyHandler extends BaseHandler
 {

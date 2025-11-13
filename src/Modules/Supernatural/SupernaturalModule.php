@@ -1,14 +1,14 @@
 <?php
 
-namespace atc\WHx4\Modules\Supernatural;
+namespace atc\BhWP\Modules\Supernatural;
 
-use atc\WHx4\Core\Module as BaseModule;
-use atc\WHx4\Core\Query\PostQuery;
-use atc\WHx4\Core\Shortcodes\ShortcodeManager;
+use atc\BhWP\Core\Module as BaseModule;
+use atc\BhWP\Core\Query\PostQuery;
+use atc\BhWP\Core\Shortcodes\ShortcodeManager;
 
-use atc\WHx4\Modules\Supernatural\PostTypes\Monster;
-use atc\WHx4\Modules\Supernatural\PostTypes\Enchanter;
-use atc\WHx4\Modules\Supernatural\PostTypes\Spell;
+use atc\BhWP\Modules\Supernatural\PostTypes\Monster;
+use atc\BhWP\Modules\Supernatural\PostTypes\Enchanter;
+use atc\BhWP\Modules\Supernatural\PostTypes\Spell;
 
 final class SupernaturalModule extends BaseModule
 {
@@ -24,7 +24,7 @@ final class SupernaturalModule extends BaseModule
         //ViewLoader::registerModuleViewRoot( 'supernatural', WP_CONTENT_DIR . '/shared-supernatural-views' );
         
         // Register shortcodes
-        ShortcodeManager::add(\atc\WHx4\Modules\Supernatural\Shortcodes\SupernaturalShortcode::class);
+        ShortcodeManager::add(\atc\BhWP\Modules\Supernatural\Shortcodes\SupernaturalShortcode::class);
     }
 
     /*

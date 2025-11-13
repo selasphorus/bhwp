@@ -1,9 +1,9 @@
 <?php
 
-namespace atc\WHx4\Admin;
+namespace atc\BhWP\Admin;
 
-use atc\WHx4\Core\WHx4;
-use atc\WHx4\Core\ViewLoader;
+use atc\BhWP\Core\BhWP;
+use atc\BhWP\Core\ViewLoader;
 
 class SettingsPageController
 {
@@ -21,8 +21,8 @@ class SettingsPageController
     {
         //error_log( '=== SettingsPageController::addSettingsPage() ===' );
         add_options_page(
-            'WHx4 v2 Plugin Settings', // page_title
-            'WHx4 v2 Settings', // menu_title
+            'BhWP v2 Plugin Settings', // page_title
+            'BhWP v2 Settings', // menu_title
             'manage_options', // capability
             'whx4-settings', // menu_slug
             [ $this, 'renderSettingsPage' ] // callback
@@ -30,14 +30,14 @@ class SettingsPageController
     }*/
     
     /**
-     * Register the WHx4 settings page with the AdminPageRegistry
+     * Register the BhWP settings page with the AdminPageRegistry
      */
     public function registerSettingsPage(AdminPageRegistry $registry): void
     {
         $registry->registerPage('whx4-settings', [
             'type' => 'options',
-            'page_title' => 'WHx4 v2 Plugin Settings',
-            'menu_title' => 'WHx4 v2 Settings',
+            'page_title' => 'BhWP v2 Plugin Settings',
+            'menu_title' => 'BhWP v2 Settings',
             'capability' => 'manage_options',
             'menu_slug' => 'whx4-settings',
             'controller' => [$this, 'renderSettingsPage'],
@@ -61,9 +61,9 @@ class SettingsPageController
     {
         //error_log( '=== SettingsPageController::renderSettingsPage() ===' );
         ViewLoader::render('settings-page', [
-            'availableModules' => WHx4::ctx()->getAvailableModules(),
-            'activeModules'    => WHx4::ctx()->getSettingsManager()->getActiveModuleSlugs(),
-            'enabledPostTypes' => WHx4::ctx()->getSettingsManager()->getEnabledPostTypeSlugsByModule(),
+            'availableModules' => BhWP::ctx()->getAvailableModules(),
+            'activeModules'    => BhWP::ctx()->getSettingsManager()->getActiveModuleSlugs(),
+            'enabledPostTypes' => BhWP::ctx()->getSettingsManager()->getEnabledPostTypeSlugsByModule(),
         ]);
     }
 

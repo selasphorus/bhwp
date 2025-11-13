@@ -1,11 +1,11 @@
 <?php
 
-namespace atc\WHx4\Modules\Supernatural\Shortcodes;
+namespace atc\BhWP\Modules\Supernatural\Shortcodes;
 
-use atc\WHx4\Core\Contracts\ShortcodeInterface;
-use atc\WHx4\Core\WHx4;
-use atc\WHx4\Utils\ClassInfo;
-use atc\WHx4\Core\ViewLoader;
+use atc\BhWP\Core\Contracts\ShortcodeInterface;
+use atc\BhWP\Core\BhWP;
+use atc\BhWP\Utils\ClassInfo;
+use atc\BhWP\Core\ViewLoader;
 
 final class SupernaturalShortcode implements ShortcodeInterface
 {
@@ -18,7 +18,7 @@ final class SupernaturalShortcode implements ShortcodeInterface
     {
         $info = "";
         
-        $ctx = WHx4::ctx();
+        $ctx = BhWP::ctx();
         $key = ClassInfo::getModuleKey(self::class);
         $module = $ctx->getModule($key);
         if (!$module) {

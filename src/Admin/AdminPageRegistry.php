@@ -1,11 +1,11 @@
 <?php
 
-namespace atc\WHx4\Admin;
+namespace atc\BhWP\Admin;
 
 /**
  * Registry for admin pages that allows add-on plugins to register their own pages
  * 
- * This class provides a centralized way for WHx4 and its add-ons to register
+ * This class provides a centralized way for BhWP and its add-ons to register
  * admin pages. It supports both top-level pages and subpages under existing menus.
  */
 class AdminPageRegistry

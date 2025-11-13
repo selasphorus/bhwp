@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace atc\WHx4\Core\Traits;
+namespace atc\BhWP\Core\Traits;
 
 trait SubtypeDefaults
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace atc\WHx4\Utils;
+namespace atc\BhWP\Utils;
 
-use atc\WHx4\Core\WHx4;
+use atc\BhWP\Core\BhWP;
 
 class TitleFilter
 {

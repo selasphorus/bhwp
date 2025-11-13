@@ -1,8 +1,8 @@
 <?php
 
-namespace atc\WHx4\Core;
+namespace atc\BhWP\Core;
 
-use atc\WHx4\Core\Traits\HasTypeProperties;
+use atc\BhWP\Core\Traits\HasTypeProperties;
 
 // Shared logic & constructor for all registrable types (CPTs, taxonomies, maybe more)
 abstract class BaseHandler

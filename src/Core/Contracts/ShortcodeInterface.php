@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace atc\WHx4\Core\Contracts;
+namespace atc\BhWP\Core\Contracts;
 
 interface ShortcodeInterface
 {

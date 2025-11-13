@@ -1,6 +1,6 @@
 <?php
 
-namespace atc\WHx4\Core\Traits;
+namespace atc\BhWP\Core\Traits;
 
 // TODO: adapt as needed to apply to taxonomies and blocks as well as post types -- ???
 trait HasTypeProperties

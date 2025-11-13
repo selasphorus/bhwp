@@ -1,12 +1,12 @@
 <?php
 
-namespace atc\WHx4\Core;
+namespace atc\BhWP\Core;
 
-use atc\WHx4\Utils\TitleFilter;
-use atc\WHx4\Core\FieldGroupLoader;
-use atc\WHx4\Core\TemplateRouter;
-use atc\WHx4\Core\Shortcodes\ShortcodeManager;
-use atc\WHx4\Core\Assets\AssetManager;
+use atc\BhWP\Utils\TitleFilter;
+use atc\BhWP\Core\FieldGroupLoader;
+use atc\BhWP\Core\TemplateRouter;
+use atc\BhWP\Core\Shortcodes\ShortcodeManager;
+use atc\BhWP\Core\Assets\AssetManager;
 
 class CoreServices
 {

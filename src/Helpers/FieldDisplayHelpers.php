@@ -1,6 +1,6 @@
 <?php
 
-namespace atc\WHx4\Helpers;
+namespace atc\BhWP\Helpers;
 
 class FieldDisplayHelpers
 {

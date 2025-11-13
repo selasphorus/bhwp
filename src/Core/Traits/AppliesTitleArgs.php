@@ -1,8 +1,8 @@
 <?php
 
-namespace atc\WHx4\Core\Traits;
+namespace atc\BhWP\Core\Traits;
 
-use atc\WHx4\Utils\TitleFilter;
+use atc\BhWP\Utils\TitleFilter;
 
 trait AppliesTitleArgs
 {

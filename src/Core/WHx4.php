@@ -1,11 +1,11 @@
 <?php
 
-namespace atc\WHx4\Core;
+namespace atc\BhWP\Core;
 
 use LogicException;
-use atc\WHx4\Core\Contracts\PluginContext;
+use atc\BhWP\Core\Contracts\PluginContext;
 
-final class WHx4
+final class BhWP
 {
     private static ?PluginContext $ctx = null;
 
@@ -17,7 +17,7 @@ final class WHx4
     public static function ctx(): PluginContext
     {
         if (self::$ctx === null) {
-            throw new LogicException('PluginContext not set. Call WHx4::setContext() during plugin boot.');
+            throw new LogicException('PluginContext not set. Call BhWP::setContext() during plugin boot.');
         }
         return self::$ctx;
     }

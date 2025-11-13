@@ -1,12 +1,12 @@
 <?php
 /**
- * Interface for all WHx4 ACF Field Groups.
+ * Interface for all BhWP ACF Field Groups.
  *
- * Developers: Please follow WHx4 Field Group standards.
+ * Developers: Please follow BhWP Field Group standards.
  * See: /docs/FieldGroupStandards.md
  */
 
-namespace atc\WHx4\Core\Contracts;
+namespace atc\BhWP\Core\Contracts;
 
 interface FieldGroupInterface
 {

@@ -2,29 +2,29 @@
 
 // Initialize the plugin, register hooks, and manage dependencies
 
-namespace atc\WHx4;
+namespace atc\BhWP;
 
-use atc\WHx4\Core\Contracts\PluginContext;
-use atc\WHx4\Core\WHx4;
+use atc\BhWP\Core\Contracts\PluginContext;
+use atc\BhWP\Core\BhWP;
 //
-use atc\WHx4\Core\CoreServices;
-use atc\WHx4\Core\BootOrder;
-use atc\WHx4\Core\PostTypeRegistrar;
-use atc\WHx4\Core\SubtypeRegistry;
-use atc\WHx4\Core\TaxonomyRegistrar;
-use atc\WHx4\Core\FieldGroupLoader;
-//use atc\WHx4\Core\SubtypeTermSeeder;
-use atc\WHx4\Core\Contracts\ModuleInterface;
-use atc\WHx4\Core\SettingsManager;
-use atc\WHx4\Admin\SettingsPageController;
-use atc\WHx4\Admin\FieldKeyAuditPageController;
+use atc\BhWP\Core\CoreServices;
+use atc\BhWP\Core\BootOrder;
+use atc\BhWP\Core\PostTypeRegistrar;
+use atc\BhWP\Core\SubtypeRegistry;
+use atc\BhWP\Core\TaxonomyRegistrar;
+use atc\BhWP\Core\FieldGroupLoader;
+//use atc\BhWP\Core\SubtypeTermSeeder;
+use atc\BhWP\Core\Contracts\ModuleInterface;
+use atc\BhWP\Core\SettingsManager;
+use atc\BhWP\Admin\SettingsPageController;
+use atc\BhWP\Admin\FieldKeyAuditPageController;
 
-use atc\WHx4\Core\ViewLoader;
-use atc\WHx4\Utils\TitleFilter;
+use atc\BhWP\Core\ViewLoader;
+use atc\BhWP\Utils\TitleFilter;
 //
-use atc\WHx4\ACF\JsonPaths;
-use atc\WHx4\ACF\RestrictAccess;
-use atc\WHx4\ACF\BlockRegistrar;
+use atc\BhWP\ACF\JsonPaths;
+use atc\BhWP\ACF\RestrictAccess;
+use atc\BhWP\ACF\BlockRegistrar;
 
 final class Plugin implements PluginContext
 {
@@ -91,7 +91,7 @@ final class Plugin implements PluginContext
 
     public function boot(): void
     {
-        error_log( '=== WHx4\Plugin::boot() ===' );
+        error_log( '=== BhWP\Plugin::boot() ===' );
         if ( $this->booted ) {
             return;
 		}
@@ -99,7 +99,7 @@ final class Plugin implements PluginContext
 		// Allow others to register modules early
 		do_action( 'bhwp_pre_boot', $this );
 
-		WHx4::setContext($this); // <-- make context available to all handlers
+		BhWP::setContext($this); // <-- make context available to all handlers
 
         //$this->defineConstants(); // phased out (for now) -- constants now defined via whx4.php
         $this->registerAdminHooks();
@@ -138,7 +138,7 @@ final class Plugin implements PluginContext
 			(new FieldKeyAuditPageController($this))->addHooks();
 			
 			// THEN initialize the registry, which fires the 'bhwp_admin_pages_init' action
-			$registry = \atc\WHx4\Admin\AdminPageRegistry::getInstance();
+			$registry = \atc\BhWP\Admin\AdminPageRegistry::getInstance();
 			$registry->init();
 			
 			add_action('admin_enqueue_scripts', [$this, 'enqueueAdminAssets']);
@@ -462,7 +462,7 @@ final class Plugin implements PluginContext
 					continue;
 				}
 
-				if( !is_subclass_of($moduleClass, \atc\WHx4\Core\Contracts\ModuleInterface::class) ) {
+				if( !is_subclass_of($moduleClass, \atc\BhWP\Core\Contracts\ModuleInterface::class) ) {
 					error_log("Class $moduleClass is not a ModuleInterface.");
 					continue;
 				}
@@ -521,7 +521,7 @@ final class Plugin implements PluginContext
 
 		// Make sure WP default Post Types are also accounted for so that Subtypes will work -- e.g. subtype of Post
 		// TODO: make this more robust to ensure that these default types haven't for some reason been deactivated/removed?
-		$core = new \atc\WHx4\Modules\Core\CoreModule();
+		$core = new \atc\BhWP\Modules\Core\CoreModule();
 		$coreHandlerClasses = $core->getPostTypeHandlerClasses();
 		foreach ($coreHandlerClasses as $slug => $class) {
 			$this->activePostTypes[$slug] = $class;

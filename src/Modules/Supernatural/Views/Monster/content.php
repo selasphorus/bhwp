@@ -1,5 +1,5 @@
 <?php
-use atc\WHx4\Core\PostTypeHandler;
+use atc\BhWP\Core\PostTypeHandler;
 
 /** @var WP_Post $post */
 $handler = PostTypeHandler::getHandlerForPost($post);

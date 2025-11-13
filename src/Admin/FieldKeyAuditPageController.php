@@ -1,9 +1,9 @@
 <?php
 
-namespace atc\WHx4\Admin;
+namespace atc\BhWP\Admin;
 
-use atc\WHx4\Core\WHx4;
-use atc\WHx4\Migrations\FieldKeyMigrator;
+use atc\BhWP\Core\BhWP;
+use atc\BhWP\Migrations\FieldKeyMigrator;
 
 final class FieldKeyAuditPageController
 {
