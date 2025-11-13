@@ -26,7 +26,7 @@ class ScopedDateResolver
      * - inclusive_end: bool (default true) -> end normalized to end-of-day 23:59:59
      *
      * Extensibility:
-     * - Filter 'whx4_scopes_register' can add/override scope resolvers.
+     * - Filter 'bhwp_scopes_register' can add/override scope resolvers.
      *
      * @param string $scope
      // OR
@@ -259,7 +259,7 @@ class ScopedDateResolver
              *   fn(DateTimeImmutable $now, DateTimeZone $tz): array{0:DateTimeImmutable,1:DateTimeImmutable}
              *
              * Example:
-             *   add_filter('whx4_scopes_register', function($scopes) {
+             *   add_filter('bhwp_scopes_register', function($scopes) {
              *       $scopes['next_90_days'] = function($now) {
              *           $start = self::atStartOfDay($now);
              *           $end   = $start->add(new DateInterval('P90D'));
@@ -269,7 +269,7 @@ class ScopedDateResolver
              *   });
              */
             // Pass $now and $options for context if users want them.
-            $filtered = apply_filters('whx4_scopes_register', $scopeResolvers, $now, $options);
+            $filtered = apply_filters('bhwp_scopes_register', $scopeResolvers, $now, $options);
 
             if (is_array($filtered)) {
                 // Keep only callables; preserve keys.

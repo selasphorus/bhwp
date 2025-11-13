@@ -154,8 +154,8 @@ final class PostQuery
          * Filter name keeps your prefix and allows per-type specialization.
          */
         // WIP!!!
-        $args = apply_filters('whx4_query_args', $args, $p);
-        $args = apply_filters("whx4_query_args_{$ptype}", $args, $p);
+        $args = apply_filters('bhwp_query_args', $args, $p);
+        $args = apply_filters("bhwp_query_args_{$ptype}", $args, $p);
 
         // 5) Run the query.
         $q = new WP_Query($args);
@@ -234,8 +234,8 @@ final class PostQuery
 		    // If caller didn't set pagination, apply (filterable) defaults.
 			$limit = (int) get_option('posts_per_page', 10);
 			// TODO/Optional: add filters for overriding this default, e.g.:
-			//$limit = (int) apply_filters('whx4_query_default_posts_per_page', $limit, $params);
-			//if ($ptype) { $limit = (int) apply_filters("whx4_{$ptype}_query_default_posts_per_page", $limit, $params); }
+			//$limit = (int) apply_filters('bhwp_query_default_posts_per_page', $limit, $params);
+			//if ($ptype) { $limit = (int) apply_filters("bhwp_{$ptype}_query_default_posts_per_page", $limit, $params); }
 			//$limit = 10;
 		}
 		

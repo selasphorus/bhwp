@@ -34,8 +34,8 @@ trait HasTypeProperties
     	//error_log( 'labels (merged): ' . print_r( $labels, true ) );
 
     	// Filter the array
-		$filtered = apply_filters("whx4_labels_{$slug}", $labels, $slug, $this);
-		return apply_filters("whx4_labels", $filtered, $slug, $this);
+		$filtered = apply_filters("bhwp_labels_{$slug}", $labels, $slug, $this);
+		return apply_filters("bhwp_labels", $filtered, $slug, $this);
 	}
 
 	public function getDefaultLabels(): array
