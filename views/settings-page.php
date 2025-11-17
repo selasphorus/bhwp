@@ -8,8 +8,8 @@ $enabledPostTypes   = $enabledPostTypes ?? [];
 <div class="wrap">
     <h1>Plugin Settings</h1>
     <form method="post" action="options.php">
-        <?php settings_fields( 'whx4_plugin_settings_group' ); ?>
-        <?php do_settings_sections( 'whx4_plugin_settings' ); ?>
+        <?php settings_fields( 'bhwp_plugin_settings_group' ); ?>
+        <?php do_settings_sections( 'bhwp_plugin_settings' ); ?>
 
         <?php
         /*
@@ -20,7 +20,7 @@ $enabledPostTypes   = $enabledPostTypes ?? [];
         */
         ?>
 
-        <table class="form-table" id="whx4-settings-table">
+        <table class="form-table" id="bhwp-settings-table">
             <tbody>
                 <?php foreach ( $availableModules as $moduleSlug => $moduleClass ) :
                     $isActive  = in_array( $moduleSlug, $activeModules, true );
@@ -33,7 +33,7 @@ $enabledPostTypes   = $enabledPostTypes ?? [];
                                 <input
                                     type="checkbox"
                                     class="module-toggle"
-                                    name="whx4_plugin_settings[active_modules][]"
+                                    name="bhwp_plugin_settings[active_modules][]"
                                     value="<?php echo esc_attr( $moduleSlug ); ?>"
                                     <?php checked( $isActive ); ?>
                                 />
@@ -56,7 +56,7 @@ $enabledPostTypes   = $enabledPostTypes ?? [];
                                     <label style="display:block;">
                                         <input
                                             type="checkbox"
-                                            name="whx4_plugin_settings[enabled_post_types][<?php echo esc_attr( $moduleSlug ); ?>][]"
+                                            name="bhwp_plugin_settings[enabled_post_types][<?php echo esc_attr( $moduleSlug ); ?>][]"
                                             value="<?php echo esc_attr( $slug ); ?>"
                                             <?php checked( $isEnabled ); ?>
                                         />
