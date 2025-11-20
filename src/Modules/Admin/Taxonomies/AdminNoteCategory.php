@@ -2,7 +2,7 @@
 
 namespace WXC\Modules\Admin\Taxonomies;
 
-use WXC\Core\TaxonomyHandler;
+use WXC\Taxonomies\TaxonomyHandler;
 
 class AdminNoteCategory extends TaxonomyHandler
 {

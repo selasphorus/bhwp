@@ -2,7 +2,7 @@
 
 namespace WXC\Modules\Admin\PostTypes;
 
-use WXC\Core\PostTypeHandler;
+use WXC\PostTypes\PostTypeHandler;
 
 // TODO: phase out this post type, migrate admin_notes to more general "Notes" posttype?
 class AdminNote extends PostTypeHandler

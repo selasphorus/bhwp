@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace WXC\Core\Traits;
+namespace WXC\Traits;
 
 trait SubtypeDefaults
 {

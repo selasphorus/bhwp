@@ -4,22 +4,22 @@
 
 namespace atc\WXC;
 
-use WXC\Core\Contracts\PluginContext;
-use WXC\Core\WXC;
+use WXC\Contracts\PluginContext;
+use WXC\App;
 //
-use WXC\Core\CoreServices;
-use WXC\Core\BootOrder;
-use WXC\Core\PostTypeRegistrar;
-use WXC\Core\SubtypeRegistry;
-use WXC\Core\TaxonomyRegistrar;
-use WXC\Core\FieldGroupLoader;
-//use WXC\Core\SubtypeTermSeeder;
-use WXC\Core\Contracts\ModuleInterface;
-use WXC\Core\SettingsManager;
+use WXC\CoreServices;
+use WXC\BootOrder;
+use WXC\PostTypes\PostTypeRegistrar;
+use WXC\PostTypes\SubtypeRegistry;
+use WXC\Taxonomies\TaxonomyRegistrar;
+use WXC\FieldGroupLoader;
+//use WXC\PostTypes\SubtypeTermSeeder;
+use WXC\Contracts\ModuleInterface;
+use WXC\SettingsManager;
 use WXC\Admin\SettingsPageController;
 use WXC\Admin\FieldKeyAuditPageController;
 
-use WXC\Core\ViewLoader;
+use WXC\Templates\ViewLoader;
 use WXC\Utils\TitleFilter;
 //
 use WXC\ACF\JsonPaths;
@@ -196,7 +196,7 @@ final class Plugin implements PluginContext
 		// Register systems in the same order that they will run, though prioritied enforce the actual order on 'init' or 'acf/init'
 
 		// Register Custom Post Types
-		//(new \WXC\Core\PostTypeRegistrar($this))->register(); // init:10
+		//(new \WXC\PostTypes\PostTypeRegistrar($this))->register(); // init:10
         $this->postTypeRegistrar = new PostTypeRegistrar($this); // instance-based (needs plugin state)
         $this->postTypeRegistrar->register();                    // add_action('init', ..., BootOrder::CPT)
 
@@ -206,7 +206,7 @@ final class Plugin implements PluginContext
         // Register shared/global taxonomies? WIP
         /*
         add_filter('wxc_register_taxonomy_handlers', function(array $list): array {
-			$list[] = \WXC\Core\Taxonomies\RexTag::class; // object_types may be ['*'] or an explicit list
+			$list[] = \WXC\Taxonomies\RexTag::class; // object_types may be ['*'] or an explicit list
 			return $list;
 		});
 
@@ -432,7 +432,7 @@ final class Plugin implements PluginContext
 					continue;
 				}
 
-				if( !is_subclass_of($moduleClass, \WXC\Core\Contracts\ModuleInterface::class) ) {
+				if( !is_subclass_of($moduleClass, \WXC\Contracts\ModuleInterface::class) ) {
 					error_log("Class $moduleClass is not a ModuleInterface.");
 					continue;
 				}

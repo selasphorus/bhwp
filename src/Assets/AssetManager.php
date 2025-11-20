@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace WXC\Core\Assets;
+namespace WXC\Assets;
 
 final class AssetManager
 {

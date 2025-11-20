@@ -1,11 +1,11 @@
 <?php
 
-namespace WXC\Core;
+namespace WXC;
 
 use LogicException;
-use WXC\Core\Contracts\PluginContext;
+use WXC\Contracts\PluginContext;
 
-final class WXC
+final class App
 {
     private static ?PluginContext $ctx = null;
 

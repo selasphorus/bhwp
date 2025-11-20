@@ -2,11 +2,11 @@
 
 namespace WXC\Core;
 
-use WXC\Core\WXC;
-use WXC\Core\Contracts\ModuleInterface;
-use WXC\Core\ViewLoader;
-use WXC\Core\PostTypeHandler;
-use WXC\Core\Shortcodes\ShortcodeManager;
+use WXC\App;
+use WXC\Contracts\ModuleInterface;
+use WXC\Templates\ViewLoader;
+use WXC\PostTypes\PostTypeHandler;
+use WXC\Shortcodes\ShortcodeManager;
 
 // TODO: make this final class?
 abstract class Module implements ModuleInterface
@@ -69,7 +69,7 @@ abstract class Module implements ModuleInterface
 		}
 
 		//error_log('Module::boot -> calling ShortcodeManager::add');
-        ShortcodeManager::add(WXC\Core\Shortcodes\WXCListShortcode::class);
+        ShortcodeManager::add(WXC\Shortcodes\WXCListShortcode::class);
     }
 
 	public function getSlug(): string

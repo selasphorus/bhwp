@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace WXC\Core\Traits;
+namespace WXC\Traits;
 
-use WXC\Core\Query\PostQuery;
+use WXC\Query\PostQuery;
 
 trait SubtypeQueryHelpers
 {

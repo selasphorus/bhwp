@@ -2,9 +2,9 @@
 
 namespace WXC\Modules\Supernatural;
 
-use WXC\Core\Module as BaseModule;
-use WXC\Core\Query\PostQuery;
-use WXC\Core\Shortcodes\ShortcodeManager;
+use WXC\Module as BaseModule;
+use WXC\Query\PostQuery;
+use WXC\Shortcodes\ShortcodeManager;
 
 use WXC\Modules\Supernatural\PostTypes\Monster;
 use WXC\Modules\Supernatural\PostTypes\Enchanter;

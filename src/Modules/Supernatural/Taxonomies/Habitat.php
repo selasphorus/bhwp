@@ -2,7 +2,7 @@
 
 namespace WXC\Modules\Supernatural\Taxonomies;
 
-use WXC\Core\TaxonomyHandler;
+use WXC\Taxonomies\TaxonomyHandler;
 
 class Habitat extends TaxonomyHandler
 {

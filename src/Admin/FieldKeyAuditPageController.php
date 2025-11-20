@@ -2,7 +2,7 @@
 
 namespace WXC\Admin;
 
-use WXC\Core\WXC;
+use WXC\App;
 use WXC\Migrations\FieldKeyMigrator;
 
 final class FieldKeyAuditPageController

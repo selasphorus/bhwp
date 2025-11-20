@@ -2,7 +2,7 @@
 
 namespace WXC\Core;
 
-use WXC\Core\BaseHandler;
+use WXC\BaseHandler;
 
 abstract class TaxonomyHandler extends BaseHandler
 {

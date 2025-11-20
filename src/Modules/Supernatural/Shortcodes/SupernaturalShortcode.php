@@ -2,10 +2,10 @@
 
 namespace WXC\Modules\Supernatural\Shortcodes;
 
-use WXC\Core\Contracts\ShortcodeInterface;
-use WXC\Core\WXC;
+use WXC\Contracts\ShortcodeInterface;
+use WXC\App;
 use WXC\Utils\ClassInfo;
-use WXC\Core\ViewLoader;
+use WXC\Templates\ViewLoader;
 
 final class SupernaturalShortcode implements ShortcodeInterface
 {

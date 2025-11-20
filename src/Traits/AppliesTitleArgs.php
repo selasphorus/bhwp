@@ -1,6 +1,6 @@
 <?php
 
-namespace WXC\Core\Traits;
+namespace WXC\Traits;
 
 use WXC\Utils\TitleFilter;
 

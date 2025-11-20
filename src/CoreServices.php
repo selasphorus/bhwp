@@ -3,10 +3,10 @@
 namespace WXC\Core;
 
 use WXC\Utils\TitleFilter;
-use WXC\Core\FieldGroupLoader;
-use WXC\Core\TemplateRouter;
-use WXC\Core\Shortcodes\ShortcodeManager;
-use WXC\Core\Assets\AssetManager;
+use WXC\FieldGroupLoader;
+use WXC\Templates\TemplateRouter;
+use WXC\Shortcodes\ShortcodeManager;
+use WXC\Assets\AssetManager;
 
 class CoreServices
 {

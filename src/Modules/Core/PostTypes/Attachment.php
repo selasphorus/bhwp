@@ -2,7 +2,7 @@
 
 namespace WXC\Modules\Core\PostTypes;
 
-use WXC\Core\PostTypeHandler; //use WXC\Core\PostTypes\PostTypeHandler;
+use WXC\PostTypes\PostTypeHandler;
 
 // This handler stub is necessary to faciliate the registration of Subtypes of core WP post types
 

@@ -2,9 +2,9 @@
 
 namespace WXC\Core;
 
-use WXC\Core\BootOrder;
-use WXC\Core\TaxonomyHandler;
-//use WXC\Core\SubtypeRegistry;
+use WXC\BootOrder;
+use WXC\Taxonomies\TaxonomyHandler;
+//use WXC\PostTypes\SubtypeRegistry;
 
 final class TaxonomyRegistrar
 {

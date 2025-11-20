@@ -3,10 +3,9 @@
 declare(strict_types=1);
 
 namespace WXC\Core;
-// TODO: move this and ViewKind to WXC\Core\View\ ?
 
-use WXC\Core\WXC;
-use WXC\Core\ViewKind;
+use WXC\App;
+use WXC\Templates\ViewKind;
 use WXC\Utils\Text;
 use WXC\Utils\ClassInfo;
 

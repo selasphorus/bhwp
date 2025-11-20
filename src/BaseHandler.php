@@ -2,7 +2,7 @@
 
 namespace WXC\Core;
 
-use WXC\Core\Traits\HasTypeProperties;
+use WXC\Traits\HasTypeProperties;
 
 // Shared logic & constructor for all registrable types (CPTs, taxonomies, maybe more)
 abstract class BaseHandler

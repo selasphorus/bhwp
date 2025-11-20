@@ -2,15 +2,15 @@
 
 namespace WXC\Core;
 
-use WXC\Core\WXC;
-//use WXC\Core\Util\NamespaceUtil;
+use WXC\App;
+//use WXC\Util\NamespaceUtil;
 use ReflectionClass;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use RegexIterator;
-use WXC\Core\Contracts\FieldGroupInterface;
-use WXC\Core\Contracts\PostTypeFieldGroupInterface;
-use WXC\Core\Contracts\SubtypeFieldGroupInterface;
+use WXC\Contracts\FieldGroupInterface;
+use WXC\Contracts\PostTypeFieldGroupInterface;
+use WXC\Contracts\SubtypeFieldGroupInterface;
 
 class FieldGroupLoader
 {

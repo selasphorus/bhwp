@@ -6,7 +6,7 @@ use DateTimeImmutable;
 use DateTimeInterface;
 use DateTimeZone;
 use Exception;
-use WXC\Core\WXC;
+use WXC\App;
 use WXC\Query\ScopedDateResolver;
 
 

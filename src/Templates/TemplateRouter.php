@@ -1,8 +1,8 @@
 <?php
 namespace WXC\Core;
 
-use WXC\Core\WXC;
-use WXC\Core\ViewLoader;
+use WXC\App;
+use WXC\Templates\ViewLoader;
 use WXC\Utils\ClassInfo;
 
 /**

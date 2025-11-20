@@ -2,7 +2,7 @@
 
 namespace WXC\Modules\Admin\Fields;
 
-use WXC\Core\Contracts\FieldGroupInterface;
+use WXC\Contracts\FieldGroupInterface;
 
 // TODO: rename all fields (keys/names) according to wxc naming conventions
 final class AdminNoteFields implements FieldGroupInterface

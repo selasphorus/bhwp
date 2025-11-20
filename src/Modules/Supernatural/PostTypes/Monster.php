@@ -2,7 +2,7 @@
 
 namespace WXC\Modules\Supernatural\PostTypes;
 
-use WXC\Core\PostTypeHandler;
+use WXC\PostTypes\PostTypeHandler;
 use WXC\Modules\Supernatural\Taxonomies\Habitat; // ???
 
 class Monster extends PostTypeHandler

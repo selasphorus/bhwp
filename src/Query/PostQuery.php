@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace WXC\Core\Query;
+namespace WXC\Query;
 
 use WP_Query;
-use WXC\Core\WXC;
+use WXC\App;
 use WXC\Utils\DateHelper;
-use WXC\Core\Query\QueryHelpers;
-use WXC\Core\Query\MetaQueryBuilder;
-use WXC\Core\Query\TaxQueryBuilder;
-//use WXC\Core\Contracts\QueryContributor;
+use WXC\Query\QueryHelpers;
+use WXC\Query\MetaQueryBuilder;
+use WXC\Query\TaxQueryBuilder;
+//use WXC\Contracts\QueryContributor;
 //use WXC\Query\ScopedDateResolver;
-use WXC\Core\Http\UrlParamBridge;
+use WXC\Http\UrlParamBridge;
 
 final class PostQuery
 {

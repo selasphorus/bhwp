@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace WXC\Core\Query;
+namespace WXC\Query;
 
 use DateTimeImmutable;
 use DateTimeInterface;

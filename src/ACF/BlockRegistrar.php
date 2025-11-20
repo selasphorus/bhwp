@@ -2,7 +2,7 @@
 
 namespace WXC\ACF;
 
-use WXC\Core\WXC;
+use WXC\App;
 
 class BlockRegistrar
 {

@@ -2,7 +2,7 @@
 
 namespace WXC\Modules\Admin;
 
-use WXC\Core\Module as BaseModule;
+use WXC\Module as BaseModule;
 
 // Post Types
 use WXC\Modules\Admin\PostTypes\AdminNote;

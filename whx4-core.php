@@ -44,7 +44,7 @@ require_once plugin_dir_path(__FILE__) . 'vendor/autoload.php';
 
 //
 use WXC\Plugin;
-use WXC\Core\PostUtils;
+use WXC\PostTypes\PostUtils;
 
 // Test Module
 use WXC\Modules\Supernatural\SupernaturalModule as Supernatural;

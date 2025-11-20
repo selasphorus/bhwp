@@ -2,7 +2,7 @@
 
 namespace WXC\Modules\Core;
 
-use WXC\Core\Module as BaseModule;
+use WXC\Module as BaseModule;
 
 // Post Types
 use WXC\Modules\Core\PostTypes\Post;

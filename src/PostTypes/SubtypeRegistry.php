@@ -2,8 +2,8 @@
 
 namespace WXC\Core;
 
-use WXC\Core\BootOrder;
-use WXC\Core\Contracts\SubtypeInterface;
+use WXC\BootOrder;
+use WXC\Contracts\SubtypeInterface;
 
 // WIP 08/22/25
 final class SubtypeRegistry

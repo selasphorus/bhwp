@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace WXC\Core\Query;
+namespace WXC\Query;
 
-use WXC\Core\Query\QueryHelpers;
+use WXC\Query\QueryHelpers;
 use WXC\Utils\DateHelper;
 
 /**

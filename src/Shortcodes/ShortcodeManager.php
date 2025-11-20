@@ -1,7 +1,7 @@
 <?php
-namespace WXC\Core\Shortcodes;
+namespace WXC\Shortcodes;
 
-use WXC\Core\Contracts\ShortcodeInterface;
+use WXC\Contracts\ShortcodeInterface;
 
 final class ShortcodeManager
 {

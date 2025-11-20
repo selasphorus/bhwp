@@ -2,8 +2,8 @@
 
 namespace WXC\Admin;
 
-use WXC\Core\WXC;
-use WXC\Core\ViewLoader;
+use WXC\App;
+use WXC\Templates\ViewLoader;
 
 class SettingsPageController
 {

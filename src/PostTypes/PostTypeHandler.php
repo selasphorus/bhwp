@@ -1,12 +1,12 @@
 <?php
 
 namespace WXC\Core;
-// TODO: move this and BaseHandler to WXC\Core\Handlers\ ?
+// TODO: move this and BaseHandler to WXC\Handlers\ ?
 
-use WXC\Core\WXC;
-use WXC\Core\BaseHandler;
-use WXC\Core\Traits\AppliesTitleArgs;
-use WXC\Core\Query\PostQuery;
+use WXC\App;
+use WXC\BaseHandler;
+use WXC\Traits\AppliesTitleArgs;
+use WXC\Query\PostQuery;
 //
 use WXC\Utils\ClassInfo;
 

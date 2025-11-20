@@ -2,7 +2,7 @@
 
 namespace WXC\Utils;
 
-use WXC\Core\WXC;
+use WXC\App;
 
 class TitleFilter
 {

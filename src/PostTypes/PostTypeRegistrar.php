@@ -2,9 +2,9 @@
 
 namespace WXC\Core;
 
-use WXC\Core\WXC;
-use WXC\Core\BootOrder;
-use WXC\Core\PostTypeHandler;
+use WXC\App;
+use WXC\BootOrder;
+use WXC\PostTypes\PostTypeHandler;
 use WXC\Utils\Text;
 
 class PostTypeRegistrar

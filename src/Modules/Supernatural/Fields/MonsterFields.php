@@ -2,7 +2,7 @@
 
 namespace WXC\Modules\Supernatural\Fields;
 
-use WXC\Core\Contracts\FieldGroupInterface;
+use WXC\Contracts\FieldGroupInterface;
 
 final class MonsterFields implements FieldGroupInterface
 {

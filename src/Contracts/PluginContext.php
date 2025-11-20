@@ -1,8 +1,8 @@
 <?php
 
-namespace WXC\Core\Contracts;
+namespace WXC\Contracts;
 
-use WXC\Core\Contracts\ModuleInterface;
+use WXC\Contracts\ModuleInterface;
 
 interface PluginContext
 {

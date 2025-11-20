@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace WXC\Core\Http;
+namespace WXC\Http;
 
 /**
  * UrlParamBridge
