@@ -1,8 +1,8 @@
 <?php
 
-namespace atc\BhWP\Modules\Admin\Taxonomies;
+namespace WXC\Modules\Admin\Taxonomies;
 
-use atc\BhWP\Core\TaxonomyHandler;
+use WXC\Core\TaxonomyHandler;
 
 class DataTable extends TaxonomyHandler
 {

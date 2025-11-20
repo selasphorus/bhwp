@@ -1,6 +1,6 @@
 <?php
 
-namespace atc\BhWP\Utils;
+namespace WXC\Utils;
 
 class PluginPaths
 {
@@ -25,7 +25,7 @@ class PluginPaths
      */
     public static function baseFile(): string
     {
-        return self::baseDir() . 'bhwp.php'; // Adjust if your main file differs
+        return self::baseDir() . 'wxc.php'; // Adjust if your main file differs
     }
 
     /**

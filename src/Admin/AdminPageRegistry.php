@@ -1,11 +1,11 @@
 <?php
 
-namespace atc\BhWP\Admin;
+namespace WXC\Admin;
 
 /**
  * Registry for admin pages that allows add-on plugins to register their own pages
  * 
- * This class provides a centralized way for BhWP and its add-ons to register
+ * This class provides a centralized way for WXC and its add-ons to register
  * admin pages. It supports both top-level pages and subpages under existing menus.
  */
 class AdminPageRegistry
@@ -34,7 +34,7 @@ class AdminPageRegistry
     public function init(): void
     {
         // Allow plugins to register pages early
-        do_action('bhwp_admin_pages_init', $this);
+        do_action('wxc_admin_pages_init', $this);
         
         // Register all pages on admin_menu
         add_action('admin_menu', [$this, 'registerPages'], 10);

@@ -1,6 +1,6 @@
 <?php
 
-namespace atc\BhWP\ACF;
+namespace WXC\ACF;
 
 class RestrictAccess
 {  

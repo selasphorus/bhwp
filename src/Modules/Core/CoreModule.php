@@ -1,13 +1,13 @@
 <?php
 
-namespace atc\BhWP\Modules\Core;
+namespace WXC\Modules\Core;
 
-use atc\BhWP\Core\Module as BaseModule;
+use WXC\Core\Module as BaseModule;
 
 // Post Types
-use atc\BhWP\Modules\Core\PostTypes\Post;
-use atc\BhWP\Modules\Core\PostTypes\Page;
-use atc\BhWP\Modules\Core\PostTypes\Attachment;
+use WXC\Modules\Core\PostTypes\Post;
+use WXC\Modules\Core\PostTypes\Page;
+use WXC\Modules\Core\PostTypes\Attachment;
 
 final class CoreModule extends BaseModule
 {

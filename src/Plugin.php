@@ -2,36 +2,36 @@
 
 // Initialize the plugin, register hooks, and manage dependencies
 
-namespace atc\BhWP;
+namespace atc\WXC;
 
-use atc\BhWP\Core\Contracts\PluginContext;
-use atc\BhWP\Core\BhWP;
+use WXC\Core\Contracts\PluginContext;
+use WXC\Core\WXC;
 //
-use atc\BhWP\Core\CoreServices;
-use atc\BhWP\Core\BootOrder;
-use atc\BhWP\Core\PostTypeRegistrar;
-use atc\BhWP\Core\SubtypeRegistry;
-use atc\BhWP\Core\TaxonomyRegistrar;
-use atc\BhWP\Core\FieldGroupLoader;
-//use atc\BhWP\Core\SubtypeTermSeeder;
-use atc\BhWP\Core\Contracts\ModuleInterface;
-use atc\BhWP\Core\SettingsManager;
-use atc\BhWP\Admin\SettingsPageController;
-use atc\BhWP\Admin\FieldKeyAuditPageController;
+use WXC\Core\CoreServices;
+use WXC\Core\BootOrder;
+use WXC\Core\PostTypeRegistrar;
+use WXC\Core\SubtypeRegistry;
+use WXC\Core\TaxonomyRegistrar;
+use WXC\Core\FieldGroupLoader;
+//use WXC\Core\SubtypeTermSeeder;
+use WXC\Core\Contracts\ModuleInterface;
+use WXC\Core\SettingsManager;
+use WXC\Admin\SettingsPageController;
+use WXC\Admin\FieldKeyAuditPageController;
 
-use atc\BhWP\Core\ViewLoader;
-use atc\BhWP\Utils\TitleFilter;
+use WXC\Core\ViewLoader;
+use WXC\Utils\TitleFilter;
 //
-use atc\BhWP\ACF\JsonPaths;
-use atc\BhWP\ACF\RestrictAccess;
-use atc\BhWP\ACF\BlockRegistrar;
+use WXC\ACF\JsonPaths;
+use WXC\ACF\RestrictAccess;
+use WXC\ACF\BlockRegistrar;
 
 final class Plugin implements PluginContext
 {
     private static ?self $instance = null;
     protected bool $booted = false;
 
-	// NB: Set the actual modules array via boot (bhwp.php) -- this way, Plugin class contains logic only, and other plugins or themes can register additional modules dynamically
+	// NB: Set the actual modules array via boot (wxc.php) -- this way, Plugin class contains logic only, and other plugins or themes can register additional modules dynamically
 	// WIP clean this up and simplify
 	protected array $availableModules = [];
     protected array $activeModules = [];
@@ -91,17 +91,17 @@ final class Plugin implements PluginContext
 
     public function boot(): void
     {
-        //error_log( '=== BhWP\Plugin::boot() ===' );
+        //error_log( '=== WXC\Plugin::boot() ===' );
         if ( $this->booted ) {
             return;
 		}
 
 		// Allow others to register modules early
-		do_action( 'bhwp_pre_boot', $this );
+		do_action( 'wxc_pre_boot', $this );
 
-		BhWP::setContext($this); // <-- make context available to all handlers
+		WXC::setContext($this); // <-- make context available to all handlers
 
-        //$this->defineConstants(); // phased out (for now) -- constants now defined via bhwp.php
+        //$this->defineConstants(); // phased out (for now) -- constants now defined via wxc.php
         $this->registerAdminHooks();
 
         CoreServices::boot(); // wip
@@ -121,8 +121,8 @@ final class Plugin implements PluginContext
         */
         /*
         add_action( 'init', function() {
-			\atc\BhWP\Utils\TitleFilter::setContext( Plugin::getInstance() );
-			\atc\BhWP\Utils\TitleFilter::boot();
+			\WXC\Utils\TitleFilter::setContext( Plugin::getInstance() );
+			\WXC\Utils\TitleFilter::boot();
 		}, 11 );
 		*/
 
@@ -137,8 +137,8 @@ final class Plugin implements PluginContext
 			(new SettingsPageController())->addHooks();
 			(new FieldKeyAuditPageController($this))->addHooks();
 			
-			// THEN initialize the registry, which fires the 'bhwp_admin_pages_init' action
-			$registry = \atc\BhWP\Admin\AdminPageRegistry::getInstance();
+			// THEN initialize the registry, which fires the 'wxc_admin_pages_init' action
+			$registry = \WXC\Admin\AdminPageRegistry::getInstance();
 			$registry->init();
 			
 			add_action('admin_enqueue_scripts', [$this, 'enqueueAdminAssets']);
@@ -155,7 +155,7 @@ final class Plugin implements PluginContext
         add_action( 'wp_enqueue_scripts', [ $this, 'enqueuePublicAssets' ] );
 
 		// After modules boot, assign capabilities based on handlers
-		add_action( 'bhwp_modules_booted', [ $this, 'assignPostTypeCaps' ], 20, 2 );
+		add_action( 'wxc_modules_booted', [ $this, 'assignPostTypeCaps' ], 20, 2 );
     }*/
 
     public function finishBoot(): void
@@ -168,8 +168,8 @@ final class Plugin implements PluginContext
         // Load modules and config
 
         // Discover all modules registered by core + add‑ons
-        $modules = apply_filters( 'bhwp_register_modules', [] );
-		//error_log( 'modules discovered via bhwp_register_modules: '.print_r($modules, true) );
+        $modules = apply_filters( 'wxc_register_modules', [] );
+		//error_log( 'modules discovered via wxc_register_modules: '.print_r($modules, true) );
         $this->setAvailableModules( $modules );
 
         // Settings
@@ -187,7 +187,7 @@ final class Plugin implements PluginContext
 		// Ensure the active CPTs filter is added AFTER CPTs (10) and BEFORE Taxonomies (12)
 		// WIP 08/23/25
 		add_action('init', function (): void {
-			add_filter('bhwp_active_post_types', function (array $cpts): array {
+			add_filter('wxc_active_post_types', function (array $cpts): array {
 				// Return slugs of currently active CPTs
 				return array_keys($this->getActivePostTypes());
 			}, 10, 1);
@@ -196,7 +196,7 @@ final class Plugin implements PluginContext
 		// Register systems in the same order that they will run, though prioritied enforce the actual order on 'init' or 'acf/init'
 
 		// Register Custom Post Types
-		//(new \atc\BhWP\Core\PostTypeRegistrar($this))->register(); // init:10
+		//(new \WXC\Core\PostTypeRegistrar($this))->register(); // init:10
         $this->postTypeRegistrar = new PostTypeRegistrar($this); // instance-based (needs plugin state)
         $this->postTypeRegistrar->register();                    // add_action('init', ..., BootOrder::CPT)
 
@@ -205,13 +205,13 @@ final class Plugin implements PluginContext
 
         // Register shared/global taxonomies? WIP
         /*
-        add_filter('bhwp_register_taxonomy_handlers', function(array $list): array {
-			$list[] = \atc\BhWP\Core\Taxonomies\RexTag::class; // object_types may be ['*'] or an explicit list
+        add_filter('wxc_register_taxonomy_handlers', function(array $list): array {
+			$list[] = \WXC\Core\Taxonomies\RexTag::class; // object_types may be ['*'] or an explicit list
 			return $list;
 		});
 
 		// ... and expose active CPTs (for the '*' wildcard) via a small filter the registrar reads:
-		add_filter('bhwp_active_post_types', function(array $cpts) use ($plugin): array {
+		add_filter('wxc_active_post_types', function(array $cpts) use ($plugin): array {
 			return array_keys($plugin->getActivePostTypes());
 		});
 		*/
@@ -235,38 +235,38 @@ final class Plugin implements PluginContext
     // TODO: move this to core Assets class?
 	public function enqueueAdminAssets(string $hook): void
 	{
-		//if ( $hook !== 'settings_page_bhwp-settings' ) { return; }
+		//if ( $hook !== 'settings_page_wxc-settings' ) { return; }
 
 		wp_enqueue_script(
-			'bhwp-settings',
-			BHWP_PLUGIN_URL . 'assets/js/settings.js',
+			'wxc-settings',
+			WXC_PLUGIN_URL . 'assets/js/settings.js',
 			[],
 			'1.0',
 			true
 		);
 
 		/*wp_enqueue_style(
-			'bhwp-settings',
-			BHWP_PLUGIN_DIR . '/assets/css/settings.css',
+			'wxc-settings',
+			WXC_PLUGIN_DIR . '/assets/css/settings.css',
 			[],
 			'1.0'
 		);*/
 
     	wp_enqueue_style(
-            'bhwp-admin-style',
-            BHWP_PLUGIN_URL . 'assets/css/bhwp-admin.css',
+            'wxc-admin-style',
+            WXC_PLUGIN_URL . 'assets/css/wxc-admin.css',
             [],
-            filemtime( BHWP_PLUGIN_DIR . 'assets/css/bhwp-admin.css' )
+            filemtime( WXC_PLUGIN_DIR . 'assets/css/wxc-admin.css' )
         );
 	}
 
     public function enqueuePublicAssets(): void
     {
     	wp_enqueue_style(
-            'bhwp-style',
-            BHWP_PLUGIN_URL . 'assets/css/bhwp.css',
+            'wxc-style',
+            WXC_PLUGIN_URL . 'assets/css/wxc.css',
             [],
-            filemtime( BHWP_PLUGIN_DIR . 'assets/css/bhwp.css' )
+            filemtime( WXC_PLUGIN_DIR . 'assets/css/wxc.css' )
         );
     }
 
@@ -279,7 +279,7 @@ final class Plugin implements PluginContext
 
 	protected function isSettingsPage(): bool
 	{
-		return isset( $_GET['page'] ) && $_GET['page'] === 'bhwp_settings';
+		return isset( $_GET['page'] ) && $_GET['page'] === 'wxc_settings';
 	}
 
 	public function setAvailableModules( array $modules ): void
@@ -392,7 +392,7 @@ final class Plugin implements PluginContext
 		 * @param self     $plugin
 		 * @param string[] $bootedModules
 		 */
-		do_action('bhwp_modules_booted', $this, $this->bootedModules);
+		do_action('wxc_modules_booted', $this, $this->bootedModules);
 
 		return $count;
     }
@@ -432,7 +432,7 @@ final class Plugin implements PluginContext
 					continue;
 				}
 
-				if( !is_subclass_of($moduleClass, \atc\BhWP\Core\Contracts\ModuleInterface::class) ) {
+				if( !is_subclass_of($moduleClass, \WXC\Core\Contracts\ModuleInterface::class) ) {
 					error_log("Class $moduleClass is not a ModuleInterface.");
 					continue;
 				}
@@ -491,7 +491,7 @@ final class Plugin implements PluginContext
 
 		// Make sure WP default Post Types are also accounted for so that Subtypes will work -- e.g. subtype of Post
 		// TODO: make this more robust to ensure that these default types haven't for some reason been deactivated/removed?
-		$core = new \atc\BhWP\Modules\Core\CoreModule();
+		$core = new \WXC\Modules\Core\CoreModule();
 		$coreHandlerClasses = $core->getPostTypeHandlerClasses();
 		foreach ($coreHandlerClasses as $slug => $class) {
 			$this->activePostTypes[$slug] = $class;
@@ -542,7 +542,7 @@ final class Plugin implements PluginContext
             // Optional: short-circuit if nothing changed since last run
 			$activeSlugs = array_keys($this->getActivePostTypes());
 			$hash = md5(implode('|', $activeSlugs));
-			$stored = get_option('bhwp_caps_hash');
+			$stored = get_option('wxc_caps_hash');
 
 			if ($stored === $hash) {
 				return;
@@ -554,7 +554,7 @@ final class Plugin implements PluginContext
             //error_log('Capabilities assigned successfully.');
             //self::log('Capabilities assigned successfully.');
 
-            //update_option('bhwp_caps_hash', $hash);
+            //update_option('wxc_caps_hash', $hash);
         } catch (\Throwable $e) {
             error_log('Error in assignPostTypeCaps: ' . $e->getMessage() . ' @ ' . $e->getFile() . ':' . $e->getLine() );
             /*self::log(
@@ -569,12 +569,12 @@ final class Plugin implements PluginContext
     {
         // Prefer CLI output when available
         if (defined('WP_CLI') && \WP_CLI) {
-            \WP_CLI::debug($msg, 'bhwp');
+            \WP_CLI::debug($msg, 'wxc');
             return;
         }
 
         // Otherwise log to php/wp debug.log
-        error_log('[BhWP] ' . $msg);
+        error_log('[WXC] ' . $msg);
     }*/
 
 	//
@@ -597,8 +597,8 @@ final class Plugin implements PluginContext
 
     /*
 	register_deactivation_hook( __FILE__, 'flush_rewrite_rules' );
-	register_activation_hook( __FILE__, 'bhwp_flush_rewrites' );
-	function bhwp_flush_rewrites() {
+	register_activation_hook( __FILE__, 'wxc_flush_rewrites' );
+	function wxc_flush_rewrites() {
 		// call your CPT registration function here (it should also be hooked into 'init')
 		myplugin_custom_post_types_registration();
 		flush_rewrite_rules();

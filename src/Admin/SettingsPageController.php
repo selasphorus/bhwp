@@ -1,9 +1,9 @@
 <?php
 
-namespace atc\BhWP\Admin;
+namespace WXC\Admin;
 
-use atc\BhWP\Core\BhWP;
-use atc\BhWP\Core\ViewLoader;
+use WXC\Core\WXC;
+use WXC\Core\ViewLoader;
 
 class SettingsPageController
 {
@@ -11,7 +11,7 @@ class SettingsPageController
     {
         //error_log( '=== SettingsPageController::addHooks() ===' );
         // Register the settings page using the new registry system
-        add_action('bhwp_admin_pages_init', [$this, 'registerSettingsPage']);
+        add_action('wxc_admin_pages_init', [$this, 'registerSettingsPage']);
         
         // Register settings on admin_init (unchanged)
         add_action('admin_init', [$this, 'registerSettings']);
@@ -21,25 +21,25 @@ class SettingsPageController
     {
         //error_log( '=== SettingsPageController::addSettingsPage() ===' );
         add_options_page(
-            'BhWP v2 Plugin Settings', // page_title
-            'BhWP v2 Settings', // menu_title
+            'WXC v2 Plugin Settings', // page_title
+            'WXC v2 Settings', // menu_title
             'manage_options', // capability
-            'bhwp-settings', // menu_slug
+            'wxc-settings', // menu_slug
             [ $this, 'renderSettingsPage' ] // callback
         );
     }*/
     
     /**
-     * Register the BhWP settings page with the AdminPageRegistry
+     * Register the WXC settings page with the AdminPageRegistry
      */
     public function registerSettingsPage(AdminPageRegistry $registry): void
     {
-        $registry->registerPage('bhwp-settings', [
+        $registry->registerPage('wxc-settings', [
             'type' => 'options',
-            'page_title' => 'BhWP v2 Plugin Settings',
-            'menu_title' => 'BhWP v2 Settings',
+            'page_title' => 'WXC v2 Plugin Settings',
+            'menu_title' => 'WXC v2 Settings',
             'capability' => 'manage_options',
-            'menu_slug' => 'bhwp-settings',
+            'menu_slug' => 'wxc-settings',
             'controller' => [$this, 'renderSettingsPage'],
         ]);
     }
@@ -47,13 +47,13 @@ class SettingsPageController
     public function registerSettings(): void
     {
         //error_log( '=== SettingsPageController::registerSettings() ===' );
-        register_setting('bhwp_plugin_settings_group', 'bhwp_plugin_settings');
+        register_setting('wxc_plugin_settings_group', 'wxc_plugin_settings');
 
         add_settings_section(
-            'bhwp_main_settings',
+            'wxc_main_settings',
             'Module and Post Type Settings',
             null,
-            'bhwp_plugin_settings'
+            'wxc_plugin_settings'
         );
     }
 
@@ -61,9 +61,9 @@ class SettingsPageController
     {
         //error_log( '=== SettingsPageController::renderSettingsPage() ===' );
         ViewLoader::render('settings-page', [
-            'availableModules' => BhWP::ctx()->getAvailableModules(),
-            'activeModules'    => BhWP::ctx()->getSettingsManager()->getActiveModuleSlugs(),
-            'enabledPostTypes' => BhWP::ctx()->getSettingsManager()->getEnabledPostTypeSlugsByModule(),
+            'availableModules' => WXC::ctx()->getAvailableModules(),
+            'activeModules'    => WXC::ctx()->getSettingsManager()->getActiveModuleSlugs(),
+            'enabledPostTypes' => WXC::ctx()->getSettingsManager()->getEnabledPostTypeSlugsByModule(),
         ]);
     }
 

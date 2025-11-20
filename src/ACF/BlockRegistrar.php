@@ -1,8 +1,8 @@
 <?php
 
-namespace atc\BhWP\ACF;
+namespace WXC\ACF;
 
-use atc\BhWP\Core\BhWP;
+use WXC\Core\WXC;
 
 class BlockRegistrar
 {
@@ -17,8 +17,8 @@ class BlockRegistrar
             return;
         }
 
-        $modules = BhWP::ctx()->getActiveModules();
-        $postTypes = BhWP::ctx()->getActivePostTypes();
+        $modules = WXC::ctx()->getActiveModules();
+        $postTypes = WXC::ctx()->getActivePostTypes();
 
         foreach ( $modules as $module ) {
             $blockDir = $module->getPath() . '/Blocks';

@@ -1,13 +1,13 @@
 <?php
 
-namespace atc\BhWP\Utils;
+namespace WXC\Utils;
 
 use DateTimeImmutable;
 use DateTimeInterface;
 use DateTimeZone;
 use Exception;
-use atc\BhWP\Core\BhWP;
-use atc\BhWP\Query\ScopedDateResolver;
+use WXC\Core\WXC;
+use WXC\Query\ScopedDateResolver;
 
 
 class DateHelper
@@ -379,17 +379,17 @@ class DateHelper
      * Resolve the site timezone with sensible fallbacks.
      *
      * Order of precedence:
-     * 1) BhWP context (if available) via BhWP::ctx()->getTimezone()
+     * 1) WXC context (if available) via WXC::ctx()->getTimezone()
      * 2) WordPress helper wp_timezone()
      * 3) WordPress options: timezone_string, then gmt_offset
      * 4) PHP ini setting, else UTC
      */
     public static function siteTimezone(): DateTimeZone
     {
-        // 1) BhWP context (soft dependency; ignore if unavailable)
+        // 1) WXC context (soft dependency; ignore if unavailable)
         try {
-            if (class_exists(BhWP::class)) {
-                $ctx = BhWP::ctx();
+            if (class_exists(WXC::class)) {
+                $ctx = WXC::ctx();
                 if ($ctx && method_exists($ctx, 'getTimezone')) {
                     $tz = $ctx->getTimezone();
                     if ($tz instanceof DateTimeZone) {

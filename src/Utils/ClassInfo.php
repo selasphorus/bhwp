@@ -1,6 +1,6 @@
 <?php
 
-namespace atc\BhWP\Utils;
+namespace WXC\Utils;
 
 final class ClassInfo
 {

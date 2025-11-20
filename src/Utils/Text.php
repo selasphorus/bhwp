@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace atc\BhWP\Utils;
+namespace WXC\Utils;
 
 /**
- * Generic string utilities for BhWP.
+ * Generic string utilities for WXC.
  */
 final class Text
 {

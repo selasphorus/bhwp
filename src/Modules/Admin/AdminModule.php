@@ -1,11 +1,11 @@
 <?php
 
-namespace atc\BhWP\Modules\Admin;
+namespace WXC\Modules\Admin;
 
-use atc\BhWP\Core\Module as BaseModule;
+use WXC\Core\Module as BaseModule;
 
 // Post Types
-use atc\BhWP\Modules\Admin\PostTypes\AdminNote;
+use WXC\Modules\Admin\PostTypes\AdminNote;
 //use atc\Bkkp\Modules\Admin\PostTypes\YYY;
 //use atc\Bkkp\Modules\Admin\PostTypes\ZZZ;
 
@@ -16,7 +16,7 @@ final class AdminModule extends BaseModule
         $this->registerDefaultViewRoot();
         parent::boot();
 
-        /*add_filter( 'bhwp_register_subtypes', function( array $providers ): array {
+        /*add_filter( 'wxc_register_subtypes', function( array $providers ): array {
              // TODO: add use statement above to simplify these lines?
             //$providers[] = new \atc\[PluginName]\Modules\Admin\Subtypes\[SubtypeName]Subtype(); // Subtype of XXX PostType
             return $providers;

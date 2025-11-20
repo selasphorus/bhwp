@@ -1,8 +1,8 @@
 <?php
 
-namespace atc\BhWP\Utils;
+namespace WXC\Utils;
 
-use atc\BhWP\Core\BhWP;
+use WXC\Core\WXC;
 
 class TitleFilter
 {
@@ -186,7 +186,7 @@ class TitleFilter
 
     protected static function getPostTypeHandler( string $postType, \WP_Post $post ): ?PostTypeHandler
     {
-        $handlers = BHWP::ctx()->getActivePostTypes();
+        $handlers = WXC::ctx()->getActivePostTypes();
 
         foreach ( $handlers as $handler ) {
             if ( $handler->getSlug() === $postType ) {

@@ -1,9 +1,9 @@
 <?php
 
-namespace atc\BhWP\Admin;
+namespace WXC\Admin;
 
-use atc\BhWP\Core\BhWP;
-use atc\BhWP\Migrations\FieldKeyMigrator;
+use WXC\Core\WXC;
+use WXC\Migrations\FieldKeyMigrator;
 
 final class FieldKeyAuditPageController
 {
@@ -22,11 +22,11 @@ final class FieldKeyAuditPageController
     public static function addMenuPage(): void
     {
         add_submenu_page(
-            'bhwp-settings', // parent slug, change if needed
+            'wxc-settings', // parent slug, change if needed
             'ACF Field Audit',
             'ACF Field Audit',
             'manage_options',
-            'bhwp-field-audit',
+            'wxc-field-audit',
             [ self::class, 'renderPage' ]
             //[ $this, 'renderPage' ] // callback
         );
@@ -34,12 +34,12 @@ final class FieldKeyAuditPageController
 
     public static function renderPage(): void
     {
-        if ( isset( $_POST['run_audit'] ) && check_admin_referer( 'bhwp_field_audit_action', 'bhwp_field_audit_nonce' ) ) {
+        if ( isset( $_POST['run_audit'] ) && check_admin_referer( 'wxc_field_audit_action', 'wxc_field_audit_nonce' ) ) {
             self::renderResults();
             return;
         }
 
-        if ( isset( $_POST['delete_orphans'] ) && check_admin_referer( 'bhwp_field_audit_action', 'bhwp_field_audit_nonce' ) ) {
+        if ( isset( $_POST['delete_orphans'] ) && check_admin_referer( 'wxc_field_audit_action', 'wxc_field_audit_nonce' ) ) {
             self::handleDeleteOrphans();
             return;
         }
@@ -49,7 +49,7 @@ final class FieldKeyAuditPageController
             <h1>ACF Field Key Audit</h1>
             <?php self::maybeRenderNotice(); ?>
             <form method="post">
-                <?php wp_nonce_field( 'bhwp_field_audit_action', 'bhwp_field_audit_nonce' ); ?>
+                <?php wp_nonce_field( 'wxc_field_audit_action', 'wxc_field_audit_nonce' ); ?>
                 <p><button type="submit" class="button button-primary" name="run_audit">Run Audit</button></p>
             </form>
         </div>
@@ -58,7 +58,7 @@ final class FieldKeyAuditPageController
 
     private static function renderResults(): void
     {
-        $registeredKeys = apply_filters( 'bhwp_registered_field_keys', [] );
+        $registeredKeys = apply_filters( 'wxc_registered_field_keys', [] );
         $audit = FieldKeyMigrator::auditFieldKeys( $registeredKeys );
 
         ?>
@@ -74,7 +74,7 @@ final class FieldKeyAuditPageController
 
             <h2>Orphaned Field Keys (Not Registered)</h2>
             <form method="post">
-                <?php wp_nonce_field( 'bhwp_field_audit_action', 'bhwp_field_audit_nonce' ); ?>
+                <?php wp_nonce_field( 'wxc_field_audit_action', 'wxc_field_audit_nonce' ); ?>
                 <ul>
                     <?php foreach ( $audit['orphaned'] as $key ) : ?>
                         <li style="color:red;">
@@ -95,7 +95,7 @@ final class FieldKeyAuditPageController
                 <?php endforeach; ?>
             </ul> */ ?>
 
-            <p><a href="<?php echo esc_url( admin_url( 'admin.php?page=bhwp-field-audit' ) ); ?>" class="button">Run Again</a></p>
+            <p><a href="<?php echo esc_url( admin_url( 'admin.php?page=wxc-field-audit' ) ); ?>" class="button">Run Again</a></p>
         </div>
         <?php
     }
@@ -103,7 +103,7 @@ final class FieldKeyAuditPageController
     private static function handleDeleteOrphans(): void
     {
         if ( empty( $_POST['delete_keys'] ) || ! is_array( $_POST['delete_keys'] ) ) {
-            wp_safe_redirect( admin_url( 'admin.php?page=bhwp-field-audit&deleted=0' ) );
+            wp_safe_redirect( admin_url( 'admin.php?page=wxc-field-audit&deleted=0' ) );
             exit;
             //wp_die( 'No orphaned keys selected.' );
         }
@@ -123,7 +123,7 @@ final class FieldKeyAuditPageController
             );
         }
 
-        wp_safe_redirect( admin_url( 'admin.php?page=bhwp-field-audit&deleted=' . $deleted ) );
+        wp_safe_redirect( admin_url( 'admin.php?page=wxc-field-audit&deleted=' . $deleted ) );
         exit;
     }
 

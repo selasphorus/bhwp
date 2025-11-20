@@ -1,6 +1,6 @@
 <?php
 
-namespace atc\BhWP\Utils\Recurrence;
+namespace WXC\Utils\Recurrence;
 
 use RRule\RRule;
 

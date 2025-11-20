@@ -1,11 +1,11 @@
 <?php
 
-namespace atc\BhWP\Modules\Supernatural\Shortcodes;
+namespace WXC\Modules\Supernatural\Shortcodes;
 
-use atc\BhWP\Core\Contracts\ShortcodeInterface;
-use atc\BhWP\Core\BhWP;
-use atc\BhWP\Utils\ClassInfo;
-use atc\BhWP\Core\ViewLoader;
+use WXC\Core\Contracts\ShortcodeInterface;
+use WXC\Core\WXC;
+use WXC\Utils\ClassInfo;
+use WXC\Core\ViewLoader;
 
 final class SupernaturalShortcode implements ShortcodeInterface
 {
@@ -18,7 +18,7 @@ final class SupernaturalShortcode implements ShortcodeInterface
     {
         $info = "";
         
-        $ctx = BhWP::ctx();
+        $ctx = WXC::ctx();
         $key = ClassInfo::getModuleKey(self::class);
         $module = $ctx->getModule($key);
         if (!$module) {
@@ -49,7 +49,7 @@ final class SupernaturalShortcode implements ShortcodeInterface
             //'pagination' => $pagination,
             'stats' => $stats,
             //'info' => $info, // for TS -- deprecate in favor of:
-            // Optionally pass debug through when BHWP_DEBUG is on:
+            // Optionally pass debug through when WXC_DEBUG is on:
             'debug'      => $monsters['debug'] ?? null,
         ];
 
