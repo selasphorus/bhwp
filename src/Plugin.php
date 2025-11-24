@@ -138,7 +138,7 @@ final class Plugin implements PluginContext
 			(new FieldKeyAuditPageController($this))->addHooks();
 			
 			// THEN initialize the registry, which fires the 'wxc_admin_pages_init' action
-			$registry = atc\WXC\Admin\AdminPageRegistry::getInstance();
+			$registry = \Admin\AdminPageRegistry::getInstance();
 			$registry->init();
 			
 			add_action('admin_enqueue_scripts', [$this, 'enqueueAdminAssets']);
@@ -491,7 +491,7 @@ final class Plugin implements PluginContext
 
 		// Make sure WP default Post Types are also accounted for so that Subtypes will work -- e.g. subtype of Post
 		// TODO: make this more robust to ensure that these default types haven't for some reason been deactivated/removed?
-		$core = new atc\WXC\Modules\Core\CoreModule();
+		$core = new \Modules\Core\CoreModule();
 		$coreHandlerClasses = $core->getPostTypeHandlerClasses();
 		foreach ($coreHandlerClasses as $slug => $class) {
 			$this->activePostTypes[$slug] = $class;
