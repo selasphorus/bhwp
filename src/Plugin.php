@@ -18,6 +18,7 @@ use atc\WXC\Contracts\ModuleInterface;
 use atc\WXC\SettingsManager;
 use atc\WXC\Admin\SettingsPageController;
 use atc\WXC\Admin\FieldKeyAuditPageController;
+use atc\WXC\Modules\Core\CoreModule;
 
 use atc\WXC\Templates\ViewLoader;
 use atc\WXC\Utils\TitleFilter;
@@ -491,7 +492,7 @@ final class Plugin implements PluginContext
 
 		// Make sure WP default Post Types are also accounted for so that Subtypes will work -- e.g. subtype of Post
 		// TODO: make this more robust to ensure that these default types haven't for some reason been deactivated/removed?
-		$core = new atc\WXC\Modules\Core\CoreModule();
+		$core = new CoreModule();
 		$coreHandlerClasses = $core->getPostTypeHandlerClasses();
 		foreach ($coreHandlerClasses as $slug => $class) {
 			$this->activePostTypes[$slug] = $class;
