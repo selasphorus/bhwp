@@ -138,7 +138,7 @@ final class Plugin implements PluginContext
 			(new FieldKeyAuditPageController($this))->addHooks();
 			
 			// THEN initialize the registry, which fires the 'wxc_admin_pages_init' action
-			$registry = \WXC\Admin\AdminPageRegistry::getInstance();
+			$registry = atc\WXC\Admin\AdminPageRegistry::getInstance();
 			$registry->init();
 			
 			add_action('admin_enqueue_scripts', [$this, 'enqueueAdminAssets']);
@@ -432,7 +432,7 @@ final class Plugin implements PluginContext
 					continue;
 				}
 
-				if( !is_subclass_of($moduleClass, \WXC\Contracts\ModuleInterface::class) ) {
+				if( !is_subclass_of($moduleClass, atc\WXC\Contracts\ModuleInterface::class) ) {
 					error_log("Class $moduleClass is not a ModuleInterface.");
 					continue;
 				}
