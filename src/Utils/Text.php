@@ -91,7 +91,7 @@ final class Text
     }
     
     // WIP
-	function sdg_digit_to_word ( $number ) 
+	function digit_to_word ( $number ) 
 	{
 		switch($number){
 			case 0:$word = "zero";break;
@@ -108,7 +108,7 @@ final class Text
 		return $word;
 	}
 	
-	function sdg_word_to_digit ( $word ) 
+	function word_to_digit ( $word ) 
 	{
 		$words_to_digits = [
 			'zero' => 0,
