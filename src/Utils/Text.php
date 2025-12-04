@@ -90,8 +90,7 @@ final class Text
         return $link;
     }
     
-    //
-    
+    // WIP
 	function sdg_digit_to_word ( $number ) 
 	{
 		switch($number){
