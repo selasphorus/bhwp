@@ -605,7 +605,11 @@ abstract class PostTypeHandler extends BaseHandler
 		}
 	
 		$handlerClass = self::getHandlerClassForPostType($postType);
-		$module = strtolower((string) ClassInfo::getModuleKey($handlerClass));
+		if ($handlerClass) {
+		    $module = strtolower((string) ClassInfo::getModuleKey($handlerClass));
+		} else {
+		    return $content;
+		}
 	
 		// Prepare view variables - let the handler prepare its own data
 		$vars = ['post' => $post];
